@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification aux posts{% endblock %}
+
+{% block body %}
+    {# {% if edit %}
+        <h1>Editer un post</h1>
+    {% else %} #}
+        <h1>Ajouter un post</h1>
+    {# {% endif %} #}
+
+    {{ form_start(formAddPost) }}
+
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(formAddPost) }}
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            {{ form_row(formAddPost.postTitle) }}
+        </div>
+        <div class="col-sm">
+            {{ form_row(formAddPost.textuelContent) }}
+            {{ form_row(formAddPost.visuelContent) }}
+        </div>
+    </div>
+    
+            {{ form_row(formAddPost.valider) }}
+
+    {{ form_end(formAddPost) }}
+
+{% endblock %}

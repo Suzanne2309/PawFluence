@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Form\PostType;
 use App\Repository\PostRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\Loader\Configurator\request;
 
 final class PostController extends AbstractController
 {
@@ -23,9 +25,10 @@ final class PostController extends AbstractController
         ]);
     }
 
-    //Fonction pour ajouter un post
+    //Fonction pour ajouter un post et editer un poste spécifique
     #[Route('/post/add', name: 'add_post')] //On crée la route vers la fonction
-    public function add_editPost(Post $post = null, request $request, PostRepository $postRepository, entityManagerInterface $em): Response
+    // #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
+    public function add_editPost(Post $post = null, Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
     {
 
         if(!$post) { //Si la variable de post n'est pas existante
@@ -38,8 +41,8 @@ final class PostController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) { //SI les données du formulaire sont soumis et qu'elles sont validé
             $post = $form->getData(); //ALORS post va récupérer les données du formulaire
-            $em = persist($post); //Puis on prépare la requête d'ajout
-            $em = flush(); //Et on enregistre le tout dans la base de données
+            $em->persist($post); //Puis on prépare la requête d'ajout
+            $em->flush(); //Et on enregistre le tout dans la base de données
 
             return $this->redirectToRoute('app_post'); //Une fois que l'ajout est terminé, on renvoie à la fonction des lists des posts
         }
