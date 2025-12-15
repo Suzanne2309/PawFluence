@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un post{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    {# <img src="" alt=""> #}
+
+    <article>
+        <h1>Détail du Post "{{ post }}"</h1>
+
+        <p>{{ post.textuelContent }}</p>
+        <p>{{ post.userOfPost }}, {{ post.publicationDateFr }}</p>
+    </article>
+</div>
+{% endblock %}

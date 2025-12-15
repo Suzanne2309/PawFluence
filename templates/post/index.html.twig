@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des posts{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des Posts</h1>
+
+    <div class="listesPost">
+        <ul>
+        {% for post in posts %}
+            <li><a href="{{ path('show_post', {'id':post.id}) }}">{{ post }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

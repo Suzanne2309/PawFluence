@@ -71,6 +71,10 @@ class Post
         return $this->publicationDate;
     }
 
+    public function getPublicationDateFr(): ?string {
+        return $this->publicationDate->format("d-m-Y");
+    }
+
     public function setPublicationDate(\DateTime $publicationDate): static
     {
         $this->publicationDate = $publicationDate;
@@ -166,5 +170,9 @@ class Post
         $this->userOfPost = $userOfPost;
 
         return $this;
+    }
+
+    public function __toString() {
+        return "" . $this->postTitle . "";
     }
 }
