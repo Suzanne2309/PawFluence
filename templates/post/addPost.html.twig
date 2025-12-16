@@ -16,15 +16,18 @@
     </div>
 
     <div class="row">
-        <div class="col-sm">
+
             {{ form_row(formAddPost.postTitle) }}
-        </div>
+
         <div class="col-sm">
             {{ form_row(formAddPost.textuelContent) }}
             {{ form_row(formAddPost.visuelContent) }}
         </div>
+        <div class="col-sm">
+            {{ form_row(formAddPost.associatedTo) }}
+            {{ form_row(formAddPost.userOfPost) }}
+        </div>
     </div>
-    
             {{ form_row(formAddPost.valider) }}
 
     {{ form_end(formAddPost) }}

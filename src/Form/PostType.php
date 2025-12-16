@@ -24,12 +24,12 @@ class PostType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('publicationDate', DateType::class, [
-                'widget' => 'single_text',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+            // ->add('publicationDate', DateType::class, [
+            //     'widget' => 'single_text',
+            //     'attr' => [
+            //         'class' => 'form-control'
+            //     ]
+            // ])
             ->add('textuelContent', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control'

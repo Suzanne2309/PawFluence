@@ -14,5 +14,10 @@
         <p>{{ post.textuelContent }}</p>
         <p>{{ post.userOfPost }}, {{ post.publicationDateFr }}</p>
     </article>
+
+    <article class="edit">
+        <h2>Vous voulez apporter des détails en plus ou en retirer ? Commençons par cliquer sur le bouton ci-dessous !</h2>
+        <a href=" {{ path('edit_post', {'id':post.id}) }} ">Editer</a>
+    </article>
 </div>
 {% endblock %}

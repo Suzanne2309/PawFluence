@@ -27,7 +27,7 @@ final class PostController extends AbstractController
 
     //Fonction pour ajouter un post et editer un poste spécifique
     #[Route('/post/add', name: 'add_post')] //On crée la route vers la fonction
-    // #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
+    #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
     public function add_editPost(Post $post = null, Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
     {
 
@@ -49,6 +49,7 @@ final class PostController extends AbstractController
 
         return $this->render('post/addPost.html.twig', [ //On envoie sur la page addPost qui contient le formulaire pour ajouter un nouveau post
             'formAddPost' => $form->createView(), //Twig ne popuvant pas traiter directement de la logique métier, la méthode createView va permettre de créer un objet formulaire pour que Twig puisse accéder au champs et envoyé les données
+            'edit' => $post->getId(),
         ]);
     }
 

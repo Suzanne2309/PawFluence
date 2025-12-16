@@ -47,6 +47,7 @@ class Post
     {
         $this->comment_on = new ArrayCollection();
         $this->associatedTo = new ArrayCollection();
+        $this->setPublicationDate(new \DateTime('now'));
     }
 
     public function getId(): ?int
