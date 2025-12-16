@@ -2,17 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -45,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTime $inscriptionDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $describe = null;
+    private ?string $_description = null;
 
     /**
      * @var Collection<int, Post>
@@ -77,6 +80,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Network::class, mappedBy: 'networkUser')]
     private Collection $user_network;
 
+    #[ORM\Column]
+    private bool $isVerified = false;
+
     public function __construct()
     {
         $this->posting = new ArrayCollection();
@@ -84,6 +90,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->respond = new ArrayCollection();
         $this->debating = new ArrayCollection();
         $this->user_network = new ArrayCollection();
+        $this->setInscriptionDate(new DateTime('now'));
     }
 
     public function getId(): ?int
@@ -203,14 +210,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDescribe(): ?string
+    public function getDescription(): ?string
     {
-        return $this->describe;
+        return $this->description;
     }
 
-    public function setDescribe(?string $describe): static
+    public function setDescription(?string $description): static
     {
-        $this->describe = $describe;
+        $this->description = $description;
 
         return $this;
     }
@@ -361,5 +368,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString() {
         return $this->pseudo;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }
