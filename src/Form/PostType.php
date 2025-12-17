@@ -24,12 +24,6 @@ class PostType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            // ->add('publicationDate', DateType::class, [
-            //     'widget' => 'single_text',
-            //     'attr' => [
-            //         'class' => 'form-control'
-            //     ]
-            // ])
             ->add('textuelContent', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control'
@@ -44,9 +38,9 @@ class PostType extends AbstractType
                 'class' => Tag::class,
                 'multiple' => true,
             ])
-            ->add('userOfPost', EntityType::class, [
-                'class' => User::class,
-            ])
+            // ->add('userOfPost', EntityType::class, [
+            //     'class' => User::class,
+            // ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
                 'class' => 'btn btn-primary']

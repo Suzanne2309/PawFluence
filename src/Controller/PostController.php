@@ -41,6 +41,7 @@ final class PostController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) { //SI les données du formulaire sont soumis et qu'elles sont validé
             $post = $form->getData(); //ALORS post va récupérer les données du formulaire
+            $post->setUserOfPost($this->getUser()); //On va injecter à post l'utilisateur actuel comme l'utilisateur relié au post. On automatise donc l'ajout d'utilisateur pour le formulaire d'ajout de Post.
             $em->persist($post); //Puis on prépare la requête d'ajout
             $em->flush(); //Et on enregistre le tout dans la base de données
 

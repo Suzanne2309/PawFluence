@@ -15,7 +15,9 @@
         </ul>
     </div>
 
+    {% if app.user %}
     <h2>Ajouter un post</h2>
     <a href="{{ path('add_post') }}">+</a>
+    {% endif %}
 </div>
 {% endblock %}

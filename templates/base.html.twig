@@ -28,9 +28,13 @@
             </nav>
             <div class="searchBar"></div>
             <div class="headerBtn">
-                <a href="">Connexion</a>
+                {% if app.user %}
+                <a href="">Mon profil</a>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                <a href="{{ path('app_login') }}">Connexion</a>
                 <a href="{{ path('app_register') }}">Inscription</a>
-                <a href="">Profil</a>
+                {% endif %}
             </div>
         </header>
 
@@ -42,7 +46,6 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="">Profil</a></li>
                     <li><a href="">Accueil</a></li>
                     <li><a href="">Explorer</a></li>
                     <li><a href="">Qui sommes-nous ?</a></li>
@@ -57,8 +60,12 @@
                 </ul>
             </div>
             <div class="footerBtn">
+                {% if app.user %}
+                <a href="">Mon profil</a>
+                {% else %}
                 <a href="">Connexion</a>
-                <a href="">Inscription</a>
+                <a href="{{ path('app_register') }}">Inscription</a>
+                {% endif %}
             </div>
         </footer>
     </body>
