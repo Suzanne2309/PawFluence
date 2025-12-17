@@ -28,11 +28,16 @@ final class PostController extends AbstractController
     //Fonction pour ajouter un post et editer un poste spécifique
     #[Route('/post/add', name: 'add_post')] //On crée la route vers la fonction
     #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
+    #[IsGranted('edit', 'post')] //Si l'URL contient l'action edit et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
     public function add_editPost(Post $post = null, Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
     {
 
         if(!$post) { //Si la variable de post n'est pas existante
             $post = new Post(); //Alors on crée un nouveau object Post
+        }
+        if ($post->getUserOfPost() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
+            throw $this->createAccessDeniedException(); //Alors on donne accées pour éxecuter le reste de l'action
+            return $this->redirectToRoute('app_post');
         }
 
         $form = $this->createForm(PostType::class, $post); //On crée un nouveau formulaire post avec le fichier PostType  
@@ -56,10 +61,14 @@ final class PostController extends AbstractController
 
     //Fonction pour supprimer un post
     #[Route('/post/{id}/delete', name: 'delete_post')]
+    #[IsGranted('edit', 'post')] //Si l'URL contient l'action delete et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
     public function deletePost(Post $post, EntityManagerInterface $em)
     {
-        $user = $this->getUser(); // ?UserInterface
- 
+        // $user = $this->getUser(); 
+        if ($post->getUserOfPost() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux coincide,
+            throw $this->createAccessDeniedException(); //Alors on donne accées pour éxecuter le reste de l'action
+        }
+
         if (!$user) {
             return $this->redirectToRoute('app_login');
         }
