@@ -36,7 +36,11 @@ final class PostController extends AbstractController
             $post = new Post(); //Alors on crée un nouveau object Post
         }
         if ($post->getUserOfPost() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
-            throw $this->createAccessDeniedException(); //Alors on donne accées pour éxecuter le reste de l'action
+            // throw $this->createAccessDeniedException(); Alors on donne accées pour éxecuter le reste de l'action
+            $this->addFlash(
+                'notice',
+                'Vous n`avez pas le droit d`editer ce post !'
+            );
             return $this->redirectToRoute('app_post');
         }
 
@@ -63,14 +67,17 @@ final class PostController extends AbstractController
     #[Route('/post/{id}/delete', name: 'delete_post')]
     #[IsGranted('edit', 'post')] //Si l'URL contient l'action delete et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
     public function deletePost(Post $post, EntityManagerInterface $em)
-    {
-        // $user = $this->getUser(); 
-        if ($post->getUserOfPost() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux coincide,
-            throw $this->createAccessDeniedException(); //Alors on donne accées pour éxecuter le reste de l'action
+    { 
+        if ($post->getUserOfPost() !== $this->getUser()) { //Si On clique sur le bouton de suppression, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
+            $this->addFlash(
+                'notice',
+                'Vous n`avez pas le droit d`editer ce post !'
+            );
+            return $this->redirectToRoute('app_post');
         }
-
-        if (!$user) {
-            return $this->redirectToRoute('app_login');
+        $user = $this->getUser();
+        if (!$user) { //S'il n'y a pas d'utilisateur connecté 
+            return $this->redirectToRoute('app_login'); //Alors on renvoit l'utilisateur vers la page de log-in
         }
 
         $em->remove($post);
