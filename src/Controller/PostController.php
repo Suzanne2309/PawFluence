@@ -27,16 +27,36 @@ final class PostController extends AbstractController
 
     //Fonction pour ajouter un post et editer un poste spécifique
     #[Route('/post/add', name: 'add_post')] //On crée la route vers la fonction
-    #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
-    #[IsGranted('edit', 'post')] //Si l'URL contient l'action edit et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
-    public function add_editPost(Post $post = null, Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
+    public function addPost(Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
     {
 
-        if(!$post) { //Si la variable de post n'est pas existante
-            $post = new Post(); //Alors on crée un nouveau object Post
+        $post = new Post(); //On crée un nouveau object Post
+        
+        $form = $this->createForm(PostType::class, $post); //On crée un nouveau formulaire post avec le fichier PostType  
+
+        $form->handleRequest($request); //On va relier la requête HTTP avec notre formulaire (Permettant à symfony de faire les vérifications nécessaire et hydrater l'objet Post qui a été crée avec les nouvelles données)
+        
+        if ($form->isSubmitted() && $form->isValid()) { //SI les données du formulaire sont soumis et qu'elles sont validé
+            $post = $form->getData(); //ALORS post va récupérer les données du formulaire
+            $post->setUserOfPost($this->getUser()); //On va injecter à post l'utilisateur actuel comme l'utilisateur relié au post. On automatise donc l'ajout d'utilisateur pour le formulaire d'ajout de Post.
+            $em->persist($post); //Puis on prépare la requête d'ajout
+            $em->flush(); //Et on enregistre le tout dans la base de données
+
+            return $this->redirectToRoute('app_post'); //Une fois que l'ajout est terminé, on renvoie à la fonction des lists des posts
         }
+
+        return $this->render('post/addPost.html.twig', [ //On envoie sur la page addPost qui contient le formulaire pour ajouter un nouveau post
+            'formAddPost' => $form->createView(), //Twig ne popuvant pas traiter directement de la logique métier, la méthode createView va permettre de créer un objet formulaire pour que Twig puisse accéder au champs et envoyé les données
+        ]);
+    }
+
+    #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
+    #[IsGranted('edit', 'post')] //Si l'URL contient l'action edit et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    public function editPost(Post $post = null, Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
+    {   
         if ($post->getUserOfPost() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
             // throw $this->createAccessDeniedException(); Alors on donne accées pour éxecuter le reste de l'action
+            /* var_dump($post->getUserOfPost(), $this->getUser()); die(); */
             $this->addFlash(
                 'notice',
                 'Vous n`avez pas le droit d`editer ce post !'

@@ -21,8 +21,8 @@
             <nav>
                 <ul>
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li><a href="">Pour vous</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="">Qui sommes-nous ?</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
@@ -46,9 +46,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">Explorer</a></li>
-                    <li><a href="">Qui sommes-nous ?</a></li>
+                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li><a href="">Pour vous</a></li>
+                    <li><a href="{{ path('app_post') }}">Explorer</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
@@ -62,8 +62,9 @@
             <div class="footerBtn">
                 {% if app.user %}
                 <a href="">Mon profil</a>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-                <a href="">Connexion</a>
+                <a href="{{ path('app_login') }}">Connexion</a>
                 <a href="{{ path('app_register') }}">Inscription</a>
                 {% endif %}
             </div>

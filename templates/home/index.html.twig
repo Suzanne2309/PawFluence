@@ -6,18 +6,27 @@
 
 <div class="hero">
     <div class="welcomeTxt">
-        <H1>Bienvenue chez Pawfluence</H1>
+        <H1>Bienvenue {% if app.user %}{{app.user}}{% endif %}, chez Pawfluence !</H1>
     </div>
-    <div class="join">
-        <h2>Rejoignez le réseau :</h2>
-        <p>Attention, risque élevé de ronrons et de coups de pattes créatives !</p>
-        <div class="subscribeBtn">
-            <a href="">Inscription avec Google</a>
-            <p>OU</p>
-            <a href="">Inscription avec un e-mail</a>
-            <a href="">Vous êtes déjà membre ? Connectez-vous !</a>
+    {% if app.user %}
+        <div class="listLastPost">
+            <!--Liste des 5 dernier post de l'utilisateur avec les commentaires-->
         </div>
-    </div>
+        <div class="stats">
+            <!--Liste des statistiques de l'utilisateur (nombres de follow de la semaine, nombres des abonnements, ...)-->
+        </div>
+    {% else %}
+        <div class="join">
+            <h2>Rejoignez le réseau :</h2>
+            <p>Attention, risque élevé de ronrons et de coups de pattes créatives !</p>
+            <div class="subscribeBtn">
+                <a href="">Inscription avec Google</a>
+                <p>OU</p>
+                <a href="{{ path('app_register') }}">Inscription avec un e-mail</a>
+                <a href="{{ path('app_login') }}">Vous êtes déjà membre ? Connectez-vous !</a>
+            </div>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}
