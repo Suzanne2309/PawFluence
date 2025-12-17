@@ -54,6 +54,22 @@ final class PostController extends AbstractController
         ]);
     }
 
+    //Fonction pour supprimer un post
+    #[Route('/post/{id}/delete', name: 'delete_post')]
+    public function deletePost(Post $post, EntityManagerInterface $em)
+    {
+        $user = $this->getUser(); // ?UserInterface
+ 
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $em->remove($post);
+        $em->flush();
+
+        return $this->redirectToRoute('app_post');
+    }
+
     //Fonction pour afficher le détail d'un post
     #[Route('/post/{id}/show', name: 'show_post')]
     public function showPost(Post $post): Response
