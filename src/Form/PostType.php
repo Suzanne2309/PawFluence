@@ -20,28 +20,30 @@ class PostType extends AbstractType
     {
         $builder
             ->add('postTitle', TextType::class, [
+                'label' => 'Titre du post',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('textuelContent', TextareaType::class, [
+                'label' => 'Votre texte',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('visuelContent', TextType::class, [
+                'label' => 'Votre image',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('associatedTo', EntityType::class, [
+                'label' => 'A quel(s) catégorie(s) appartient ce post ?',
                 'class' => Tag::class,
                 'multiple' => true,
             ])
-            // ->add('userOfPost', EntityType::class, [
-            //     'class' => User::class,
-            // ])
             ->add('valider', SubmitType::class, [
+                'label' => 'Publier',
                 'attr' => [
                 'class' => 'btn btn-primary']
             ])
