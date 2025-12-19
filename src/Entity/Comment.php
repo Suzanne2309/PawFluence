@@ -40,6 +40,7 @@ class Comment
     public function __construct()
     {
         $this->answerTo = new ArrayCollection();
+        $this->setPublicationDate(new \DateTime('now'));
     }
 
     public function getId(): ?int
@@ -62,6 +63,10 @@ class Comment
     public function getPublicationDate(): ?\DateTime
     {
         return $this->publicationDate;
+    }
+
+    public function getPublicationDateFr(): ?string {
+        return $this->publicationDate->format("d-m-Y");
     }
 
     public function setPublicationDate(\DateTime $publicationDate): static
@@ -135,5 +140,9 @@ class Comment
         $this->commentUser = $commentUser;
 
         return $this;
+    }
+
+    public function __toString() {
+        return "" . $this->commentTitle . "";
     }
 }

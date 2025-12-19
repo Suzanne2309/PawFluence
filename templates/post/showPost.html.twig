@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="example-wrapper">
+<div class="post-wrapper">
 
     {# <img src="" alt=""> #}
 
@@ -22,4 +22,18 @@
     </article>
     {% endif %}
 </div>
+
+<div class="comment-wrapper">
+    {% for comment in comments %}
+        {{comment}} <br>
+        {{comment.message}} <br>
+        {{comment.commentUser}}, 
+        {{comment.publicationDateFr}} {% if app.user is same as(comment.commentUser) %} <a href="">Editer</a> <a href="">X</a>{% endif %} <br>
+    {% endfor %}
+    <br>
+    {% if app.user %}
+    <a href="{{ path('add_comment', {'id':post.id}) }}">Ajouter</a>
+    {% endif %}
+</div>
+
 {% endblock %}

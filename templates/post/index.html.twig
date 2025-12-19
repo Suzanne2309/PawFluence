@@ -7,7 +7,7 @@
 <div class="example-wrapper">
     <h1 class="text-3xl font-bold underline">Liste des Posts</h1>
 
-    <div class="listesPost">
+    <div class="listPost">
         <ul>
         {% for post in posts %}
             <li><a href="{{ path('show_post', {'id':post.id}) }}">{{ post }}</a> <a href="{{ path('delete_post', {'id':post.id}) }}">X</a>

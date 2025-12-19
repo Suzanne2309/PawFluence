@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du commentaire{% endblock %}
+
+{% block body %}
+
+        <h1>Ajouter un commentaire</h1>
+
+    {{ form_start(formAddComment) }}
+
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(formAddComment) }}
+    </div>
+
+    <div class="row">
+
+            {{ form_row(formAddComment.commentTitle) }}
+
+        <div class="col-sm">
+            {{ form_row(formAddComment.message) }}
+        </div>
+    </div>
+            {{ form_row(formAddComment.valider) }}
+
+    {{ form_end(formAddComment) }}
+
+{% endblock %}
