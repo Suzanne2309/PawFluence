@@ -7,3 +7,12 @@
     box-sizing: border-box;
 }
 
+@theme {
+    --color-white: #fff;
+    --color-black: #000;
+    --color-primary: #88B48C;
+    --color-secondary: #F6F2EA;
+    --color-accent: #FF8370;
+
+    --font
+}
