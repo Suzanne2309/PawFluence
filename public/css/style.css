@@ -1,10 +1,13 @@
 @import "tailwindcss";
 @source not "../../public";
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/assets/Quicksand-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme {
@@ -14,5 +17,5 @@
     --color-secondary: #F6F2EA;
     --color-accent: #FF8370;
 
-    --font
+    --font-quicksand: "Quicksand", ui-sans-serif, system-ui, sans-serif;
 }
