@@ -1,16 +1,19 @@
-@import "tailwindcss";
-@source not "../../public";
+/* On paramètre le fichier CSS pour que Tailwind puisse y accéder */
+/* @import "tailwindcss/preflight";
+@tailwind utilities;
+ */
 
-
-@font-face {
+/* On ajoute Quicksand pour pouvoir l'utiliser par la suite*/
+/* @font-face {
   font-family: "Quicksand";
   src: url("/assets/Quicksand-VariableFont_wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
-}
+} */
 
-@theme {
+/* On déifnie les règles de base */
+/* @theme {
     --color-white: #fff;
     --color-black: #000;
     --color-primary: #88B48C;
@@ -18,4 +21,13 @@
     --color-accent: #FF8370;
 
     --font-quicksand: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+} */
+
+/* On créer les composentes */
+/*
+@layer components {
+  .layout {
+    @apply p-6
+  }
 }
+*/

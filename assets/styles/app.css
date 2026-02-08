@@ -4,3 +4,31 @@ body {
 
 @import "tailwindcss";
 @source not "../../public";
+
+/* On ajoute Quicksand pour pouvoir l'utiliser par la suite*/
+/* @font-face {
+  font-family: "Quicksand";
+  src: url("/assets/Quicksand-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+} */
+
+/* On déifnie les règles de base */
+@theme {
+    --color-white: #fff;
+    --color-black: #000;
+    --color-primary: #88B48C;
+    --color-secondary: #F6F2EA;
+    --color-accent: #FF8370;
+
+    --font-quicksand: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* On créer les composentes */
+
+/* @layer components {
+  .btn {
+    @apply p-2 bg-[#FF8370] border-solid rounded-xl text-[#fff] 
+  }
+} */

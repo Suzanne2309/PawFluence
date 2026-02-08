@@ -4,28 +4,35 @@
 
 {% block body %}
 
-<div class="hero">
-    <div class="welcomeTxt">
+<div class="bg-[#F6F2EA] w-full flex justify-center items-center">
+    <div class="w-1/2 p-3 text-3xl">
         <H1>Bienvenue {% if app.user %}{{app.user}}{% endif %}, chez Pawfluence !</H1>
     </div>
     {% if app.user %}
-        <div class="listLastPost">
-            <!--Liste des 5 dernier post de l'utilisateur avec les commentaires-->
+    <section>
+        <article class="">
+            <h2>Qu'elle était vos aventures avec votre humain aujourd'hui ? </h2>
+            <p>La communauté serait curieuse d'en savoir plus. Cliquez ci-dessous !</p>
+        </article>
+        <div class="">
+            <!--Bouton "Partager"-->
         </div>
-        <div class="stats">
-            <!--Liste des statistiques de l'utilisateur (nombres de follow de la semaine, nombres des abonnements, ...)-->
-        </div>
+    </section>
     {% else %}
-        <div class="join">
-            <h2>Rejoignez le réseau :</h2>
-            <p>Attention, risque élevé de ronrons et de coups de pattes créatives !</p>
-            <div class="subscribeBtn">
+        <section class="w-1/2 flex flex-col gap-3">
+            <article class="items-center justify-center text-center">
+                <h2>Rejoignez le réseau :</h2>
+                <p>Attention, risque élevé de ronrons et de coups de pattes créatives !</p>
+            </article>
+            <div class="items-center justify-center text-center gap-2">
+                <div class="p-2 bg-[#FF8370] border-solid rounded-xl text-[#fff]">
                 <a href="">Inscription avec Google</a>
+                </div>
                 <p>OU</p>
-                <a href="{{ path('app_register') }}">Inscription avec un e-mail</a>
-                <a href="{{ path('app_login') }}">Vous êtes déjà membre ? Connectez-vous !</a>
+                <a class="btn" href="{{ path('app_register') }}">Inscription avec un e-mail</a>
+                <p class="">Vous êtes déjà membre ? <a href="{{ path('app_login') }}" class="underline">Connectez-vous</a> !</p>
             </div>
-        </div>
+        </section>
     {% endif %}
 </div>
 

@@ -7,18 +7,33 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Inscription</h1>
+    <section class="w-full p-3 flex justify-center items-center gap-3">
+    
+        <article class="w-1/3 p-3">
+            <h1 class="p-3 text-3xl text-center">Bienvenue chez Pawfluence</h1>
+            <p>Nos compagnons vivent tous frais payer sans lever une patte !</p>
+            <p>Et bien maintenant, ils vont travailler pour payer leur part de loyer ET aider ces semblables !</p>
+        </article>
 
-    {{ form_errors(registrationForm) }}
+        <div class="w-2/3 p-3 flex flex-col justify-evenly items-center gap-3">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.pseudo) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            <h2 class="p-3 text-center text-xl">Par ici ! Faites votre inscription en quelques clicks :</h2>
+            
+            <div class="p-2">
+                {{ form_errors(registrationForm) }}
 
-        <button type="submit" class="btn">Inscrire</button>
-    {{ form_end(registrationForm) }}
+                {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.pseudo) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn">Inscrire</button>
+
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </section>
 {% endblock %}
