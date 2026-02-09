@@ -4,68 +4,75 @@
         <meta charset="UTF-8">
         <title>{% block title %}PawFluence – Le réseau social qui soutient les animaux à chaque scroll{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        {# {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+        {% endblock %} #}
 
-        {% block javascripts %}
+        {# {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        {% endblock %} #}
     </head>
 
     <body>
-        <header class="bg-[#88B48C] p-3 w-full flex flex-row justify-between items-center">
-            <div class="w-1/4 text-center">
-                <a href="">LOGO</a>
+        <header >
+            <div class="logo_header">
+                <a href="{{ path('app_home') }}">Pawfluence</a>
             </div>
-            <nav class="w-2/4">
-                <ul class="w-full flex justify-center items-center">
-                    <li class="w-1/4 text-center"><a href="{{ path('app_home') }}">Accueil</a></li>
-                    <li class="w-1/4 text-center"><a href="">Pour vous</a></li>
-                    <li class="w-1/4 text-center"><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li class="w-1/4 text-center"><a href="">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="searchBar"></div>
-            <div class="w-1/4 flex flex-row gap-6 justify-center items-center">
-                {% if app.user %}
-                <a href="">Mon profil</a>
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-                {% else %}
-                <a href="{{ path('app_login') }}">Connexion</a>
-                <a href="{{ path('app_register') }}">Inscription</a>
-                {% endif %}
-            </div>
-        </header>
-
-        {% block body %}{% endblock %}
-        
-        <footer class="bg-[#88B48C] p-3 w-full flex flex-row justify-between items-center">
-            <div class="w-1/5 text-center">
-                <a href="">LOGO</a>
-            </div>
-            <nav class="w-2/5">
-                <ul class="flex justify-center gap-6">
+            <nav>
+                <ul class="nav_header">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="">Pour vous</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <div class="w-1/5">
-                <ul class="flex flex-col gap-3 justify-center">
-                    <li><a href="">@2025 Suzanne Pons</a></li>
-                    <li><a href="">confidentialités et cookies</a></li>
-                    <li><a href="">Mentions Légales</a></li>
-                </ul>
-            </div>
-            <div class="w-1/5 flex flex-col gap-3 justify-center">
+            <div class="searchBar"></div>
+            <div class="btn_registration_header">
                 {% if app.user %}
                 <a href="">Mon profil</a>
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                <div class="btn_logout">
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
                 {% else %}
-                <a href="{{ path('app_login') }}">Connexion</a>
-                <a href="{{ path('app_register') }}">Inscription</a>
+                <div class="login">
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                </div>
+                <div class="register">
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+        {% block body %}{% endblock %}
+        
+        <footer>
+            <div  class="logo_footer">
+                <a href="{{ path('app_home') }}">Pawfluence</a>
+            </div>
+            <nav>
+                <ul class="nav_footer">
+                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <li><a href="">Pour vous</a></li>
+                    <li><a href="{{ path('app_post') }}">Explorer</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="legal_mentions">
+                <ul>
+                    <li><a href="">@2025 Suzanne Pons</a></li>
+                    <li><a href="">Confidentialités et cookies</a></li>
+                    <li><a href="">Gestion conseils d'utilisation</a></li>
+                </ul>
+            </div>
+            <div class="btn_registration_footer">
+                {% if app.user %}
+                <a href="">Mon profil</a>
+                <a class="btn_logout" href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                <a class="login" href="{{ path('app_login') }}">Connexion</a>
+                <a class="register" href="{{ path('app_register') }}">Inscription</a>
                 {% endif %}
             </div>
         </footer>

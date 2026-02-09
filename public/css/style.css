@@ -1,33 +1,175 @@
-/* On paramètre le fichier CSS pour que Tailwind puisse y accéder */
-/* @import "tailwindcss/preflight";
-@tailwind utilities;
- */
-
-/* On ajoute Quicksand pour pouvoir l'utiliser par la suite*/
-/* @font-face {
-  font-family: "Quicksand";
-  src: url("/assets/Quicksand-VariableFont_wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-} */
-
-/* On déifnie les règles de base */
-/* @theme {
-    --color-white: #fff;
-    --color-black: #000;
-    --color-primary: #88B48C;
-    --color-secondary: #F6F2EA;
-    --color-accent: #FF8370;
-
-    --font-quicksand: "Quicksand", ui-sans-serif, system-ui, sans-serif;
-} */
-
-/* On créer les composentes */
-/*
-@layer components {
-  .layout {
-    @apply p-6
-  }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-*/
+
+/****** global ******/
+li {
+    list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/****** header ******/
+header {
+  background-color: #88B48C;
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4em;
+}
+
+.logo_header {
+  width: 15%;
+  text-align: center;
+}
+
+.logo_header a {
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+nav {
+  width: 65%;
+}
+
+.nav_header {
+  width: 100%;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3em;
+}
+
+.nav_header li {
+  width: 25%;
+}
+
+.nav_header li a {
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.btn_registration_header {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/* Log-out Buton */
+.btn_registration_header .btn_logout {
+  background-color: #FF8370;
+  width: 100%;
+  padding: 1em;
+}
+
+.btn_registration_header .btn_logout a {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/****** footer ******/
+footer {
+  background-color: #88B48C;
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 4em;
+}
+
+.logo_footer {
+  width: 15%;
+  text-align: center;
+}
+
+.logo_footer a {
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+nav {
+  width: 25%;
+}
+
+.nav_footer {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.3em;
+}
+
+.nav_footer li {
+  width: 25%;
+}
+
+.nav_footer li a {
+  color: #000;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+/* legal mentions */
+.legal_mentions {
+  width: 45%;
+}
+
+.legal_mentions ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.legal_mentions a {
+  color: #000;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.btn_registration_footer {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/* Log-out Buton */
+.btn_registration_footer .btn_logout {
+  background-color: #FF8370;
+  width: 100%;
+  padding: 1em;
+}
+
+.btn_registration_footer .btn_logout a {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+}
