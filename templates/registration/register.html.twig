@@ -3,23 +3,24 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
+<main>
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <section class="w-full p-3 flex justify-center items-center gap-3">
+    <section class="wrapper_form">
     
-        <article class="w-1/3 p-3">
-            <h1 class="p-3 text-3xl text-center">Bienvenue chez Pawfluence</h1>
-            <p>Nos compagnons vivent tous frais payer sans lever une patte !</p>
-            <p>Et bien maintenant, ils vont travailler pour payer leur part de loyer ET aider ces semblables !</p>
+        <article class="welcome">
+            <h1>Bienvenue chez Pawfluence</h1>
+            <p>Nos compagnons vivent tous frais payer sans lever une patte !
+            <br>Et bien maintenant, ils vont travailler pour payer leur part de loyer ET aider ces semblables !</p>
         </article>
 
-        <div class="w-2/3 p-3 flex flex-col justify-evenly items-center gap-3">
+        <div class="form">
 
-            <h2 class="p-3 text-center text-xl">Par ici ! Faites votre inscription en quelques clicks :</h2>
+            <h2>Par ici ! Faites votre inscription en quelques clicks :</h2>
             
-            <div class="p-2">
+            <div class="register_form">
                 {{ form_errors(registrationForm) }}
 
                 {{ form_start(registrationForm) }}
@@ -30,10 +31,11 @@
                     }) }}
                 {{ form_row(registrationForm.agreeTerms) }}
 
-                <button type="submit" class="btn">Inscrire</button>
+                <button type="submit" class="submit">Inscrire</button>
 
                 {{ form_end(registrationForm) }}
             </div>
         </div>
     </section>
+</main>
 {% endblock %}

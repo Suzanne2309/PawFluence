@@ -19,15 +19,17 @@
             <div class="logo_header">
                 <a href="{{ path('app_home') }}">Pawfluence</a>
             </div>
-            <nav>
-                <ul class="nav_header">
+            <nav class="nav_header">
+                <ul class="list_header">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="">Pour vous</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <div class="searchBar"></div>
+            <div class="searchBar">
+                <p>Rechercher</p>
+            </div>
             <div class="btn_registration_header">
                 {% if app.user %}
                 <a href="">Mon profil</a>
@@ -51,8 +53,8 @@
             <div  class="logo_footer">
                 <a href="{{ path('app_home') }}">Pawfluence</a>
             </div>
-            <nav>
-                <ul class="nav_footer">
+            <nav class="nav_footer">
+                <ul class="list_footer">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="">Pour vous</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
