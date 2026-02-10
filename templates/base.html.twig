@@ -28,15 +28,19 @@
                 </ul>
             </nav>
             <div class="searchBar">
-                <p>Rechercher</p>
+                <p>Rechercher...</p>
             </div>
             <div class="btn_registration_header">
                 {% if app.user %}
+                <div class="btn_profil">
                 <a href="">Mon profil</a>
+                </div>
                 <div class="btn_logout">
                     <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </div>
+            </div>
                 {% else %}
+            <div class="btn_registration_header">
                 <div class="login">
                     <a href="{{ path('app_login') }}">Connexion</a>
                 </div>
@@ -70,11 +74,19 @@
             </div>
             <div class="btn_registration_footer">
                 {% if app.user %}
+                <div class="btn_profil">
                 <a href="">Mon profil</a>
-                <a class="btn_logout" href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+                <div class="btn_logout">
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
                 {% else %}
-                <a class="login" href="{{ path('app_login') }}">Connexion</a>
-                <a class="register" href="{{ path('app_register') }}">Inscription</a>
+                <div class="login">
+                <a href="{{ path('app_login') }}">Connexion</a>
+                </div>
+                <div class="register">
+                <a href="{{ path('app_register') }}">Inscription</a>
+                </div>
                 {% endif %}
             </div>
         </footer>

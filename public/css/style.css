@@ -13,7 +13,6 @@ a {
   text-decoration: none;
 }
 
-
 /****** header ******/
 header {
   background-color: #88B48C;
@@ -85,6 +84,20 @@ header .searchBar p {
   gap: 1.5em;
 }
 
+/* Profil Button */
+.btn_registration_header .btn_profil {
+  background-color: #FF8370;
+  width: 50%;
+  border: 1em solid #FF8370;
+  border-radius: 3em;
+}
+
+.btn_registration_header .btn_profil a {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
 /* Log-out Button */
 .btn_registration_header .btn_logout {
   background-color: #FF8370;
@@ -100,7 +113,7 @@ header .searchBar p {
 }
 
 /* Log-in Button */
-.btn_registration_header .btn_login {
+.btn_registration_header .login {
   background-color: #FF8370;
   width: 50%;
   border: 1em solid #FF8370;
@@ -114,7 +127,7 @@ header .searchBar p {
 }
 
 /* register Button */
-.btn_registration_header .btn_register {
+.btn_registration_header .register {
   background-color: #FF8370;
   width: 50%;
   border: 1em solid #FF8370;
@@ -299,6 +312,85 @@ svg {
 
 path {
   fill: #FF8370;
+}
+
+/****** Post list page - "Explorer" ******/
+.wrapper_PostList {
+  width: 100%;
+  padding: 3em 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+.titlePost {
+  background-color: rgba(255, 131, 112, 0.3);
+  width: 50%;
+  padding: 1.2em;
+  border: 0.1em solid rgba(255, 131, 112, 0.3);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+
+
+.listPost {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+.btn_add {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.btn_add p {
+  color: #FF8370;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.btn_add a svg {
+  border: 0.3em solid #FF8370;
+  border-radius: 3em;
+}
+
+.card_post {
+  width: 100%;
+  padding: 1em;
+  background-color: rgba(136, 180, 140, 0.35);
+}
+
+.card_post li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.8em;
+}
+
+.postTitle {
+  color: #000;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.card_post a svg {
+  width: 1.5em;
 }
 
 /****** Login page ******/
