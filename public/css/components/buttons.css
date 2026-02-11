@@ -1,0 +1,45 @@
+/*** Global Button ***/
+.btn {
+  background-color: #FF8370;
+  width: 20vh;
+  text-align: center;
+  border: 1em solid #FF8370;
+  border-radius: 3em;
+}
+
+.btn a {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/*** Subscribe Button ***/
+.subscribeBtn {
+  background-color: #FF8370;
+  width: 10em;
+  text-align: center;
+  border: 1em solid #FF8370;
+  border-radius: 3em;
+}
+
+.subscribeBtn a {
+  color: #fff;
+}
+
+/*** Button Share ***/
+.btnShare {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnShare a {
+  color: #FF8370;
+  font-size: 2em;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+}

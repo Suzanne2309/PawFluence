@@ -4,7 +4,7 @@
 
 {% block body %}
 <main>
-    <section class="wrapper_form">
+    <section class="wrapperForm">
     {% if app.user %}
         <article class="welcome">
             <h2>Bienvenue {{ app.user.pseudo }}, Bon retour parmis nous !</h2>
@@ -21,7 +21,7 @@
                 <div class="error_message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
             <h2>Veuillez-vous connecter</h2>
-            <div class="login_form">
+            <div class="loginForm">
                 <div class="field">
                 <label for="username">Votre e-mail :</label>
                 <input value="{{ last_username }}" name="_username" id="username" class="bg-[#FF8370] rounded-xl" type="email" autocomplete="email" required autofocus>

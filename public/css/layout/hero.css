@@ -1,0 +1,124 @@
+/*** Hero ***/
+.wrapperHero {
+  width: 100%;
+  min-height: 15em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Bloc - title */
+.title {
+  /* On ajoute l'image de fond pour qu'elle soit centré et qu'elle couvre lespace au lieu de se répeter */
+  background-image: url("/img/catDogfriends.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  min-height: 30em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* On met en position relative pour pouvoir appliquer un filtre de transparence */
+  position: relative;
+  z-index: 0;
+}
+
+/* Avec ::before on va pouvoir créer le filtre de transparence */
+.title::before {
+  content: ""; /* Pseudo-élément */
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.title h1 {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-size: 4em;
+  font-weight: 700;
+}
+
+/* Bloc - Registration */
+.visitor {
+  width: 50%;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.ctaUser {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.visitorSubscribe {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+}
+
+/* registration boutton */
+.subscribe {
+  background-color: #FF8370;
+  width: 10em;
+  text-align: center;
+  border: 1em solid #FF8370;
+  border-radius: 3em;
+}
+
+.subscribe a {
+  color: #fff;
+}
+
+.connexion {
+  color: #FF8370;
+
+}
+
+.connexion a {
+  text-decoration: underline;
+  color: #FF8370;
+}
+
+/* Bloc - Logged-in */
+.userLoggedin {
+  width: 50%;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.btnShare {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnShare a {
+  color: #FF8370;
+  font-size: 2em;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+}

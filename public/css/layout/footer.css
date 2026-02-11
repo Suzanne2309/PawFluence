@@ -1,0 +1,88 @@
+
+/****** footer ******/
+footer {
+  background-color: #88B48C;
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 4em;
+}
+
+/* Logo */
+.logoFooter {
+  width: 15%;
+  text-align: center;
+}
+
+.logoFooter a {
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+/* Navigation list */
+.navFooter {
+  width: 25%;
+}
+
+.listFooter {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.3em;
+}
+
+.listFooter li {
+  width: 25%;
+}
+
+span {
+  color: #000;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.listFooter li a {
+  color: #000;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+/* legal mentions */
+.legalMentions {
+  width: 45%;
+}
+
+.legalMentions ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.legalMentions a {
+  color: #000;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+/* buttons */
+.btnRegistration {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5em;
+}

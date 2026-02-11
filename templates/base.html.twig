@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <title>{% block title %}PawFluence – Le réseau social qui soutient les animaux à chaque scroll{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         {# {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -16,35 +19,31 @@
 
     <body>
         <header >
-            <div class="logo_header">
+            <div class="logoHeader">
                 <a href="{{ path('app_home') }}">Pawfluence</a>
             </div>
-            <nav class="nav_header">
-                <ul class="list_header">
+            <nav class="navHeader">
+                <ul class="listHeader">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="">Pour vous</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <div class="searchBar">
-                <p>Rechercher...</p>
-            </div>
-            <div class="btn_registration_header">
+            <div class="btnRegistration">
                 {% if app.user %}
-                <div class="btn_profil">
+                <div class="btn">
                 <a href="">Mon profil</a>
                 </div>
-                <div class="btn_logout">
+                <div class="btn">
                     <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </div>
             </div>
                 {% else %}
-            <div class="btn_registration_header">
-                <div class="login">
+            <div class="btnRegistration">
+                <div class="btn">
                     <a href="{{ path('app_login') }}">Connexion</a>
                 </div>
-                <div class="register">
+                <div class="btn">
                     <a href="{{ path('app_register') }}">Inscription</a>
                 </div>
                 {% endif %}
@@ -54,37 +53,36 @@
         {% block body %}{% endblock %}
         
         <footer>
-            <div  class="logo_footer">
+            <div  class="logoFooter">
                 <a href="{{ path('app_home') }}">Pawfluence</a>
             </div>
-            <nav class="nav_footer">
-                <ul class="list_footer">
+            <nav class="navFooter">
+                <ul class="listFooter">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="">Pour vous</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="">Contact</a></li>
                 </ul>
             </nav>
-            <div class="legal_mentions">
+            <div class="legalMentions">
                 <ul>
-                    <li><a href="">@2025 Suzanne Pons</a></li>
+                    <li><span>@2025 Suzanne Pons</span></li>
                     <li><a href="">Confidentialités et cookies</a></li>
                     <li><a href="">Gestion conseils d'utilisation</a></li>
                 </ul>
             </div>
-            <div class="btn_registration_footer">
+            <div class="btnRegistration">
                 {% if app.user %}
-                <div class="btn_profil">
+                <div class="btn">
                 <a href="">Mon profil</a>
                 </div>
-                <div class="btn_logout">
+                <div class="btn">
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </div>
                 {% else %}
-                <div class="login">
+                <div class="btn">
                 <a href="{{ path('app_login') }}">Connexion</a>
                 </div>
-                <div class="register">
+                <div class="btn">
                 <a href="{{ path('app_register') }}">Inscription</a>
                 </div>
                 {% endif %}

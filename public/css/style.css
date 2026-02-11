@@ -1,10 +1,21 @@
+/****** importation css fails ******/
+
+/* Components */
+@import url("/css/components/buttons.css");
+
+/* layout */
+@import url("/css/layout/header.css");
+@import url("/css/layout/footer.css");
+@import url("/css/layout/hero.css");
+
+/****** global ******/
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
 }
 
-/****** global ******/
 li {
     list-style: none;
 }
@@ -13,136 +24,9 @@ a {
   text-decoration: none;
 }
 
-/****** header ******/
-header {
-  background-color: #88B48C;
-  width: 100%;
-  padding: 2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 4em;
-}
-
-.logo_header {
-  width: 15%;
-  text-align: center;
-}
-
-.logo_header a {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-nav_header {
-  width: 50%;
-}
-
-.list_header {
-  width: 100%;
-  padding: 0.5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3em;
-}
-
-.list_header li {
-  width: 25%;
-}
-
-.list_header li a {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-/*** Search Bar ***/
-header .searchBar {
-    background-color: #F6F2EA;
-    width: 20%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-}
-
-header .searchBar p {
-  color: #030303;
-  font-size: 0.7em;
-}
-
-/*** Registration buttons ***/
-.btn_registration_header {
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.5em;
-}
-
-/* Profil Button */
-.btn_registration_header .btn_profil {
-  background-color: #FF8370;
-  width: 50%;
-  border: 1em solid #FF8370;
-  border-radius: 3em;
-}
-
-.btn_registration_header .btn_profil a {
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 600;
-}
-
-/* Log-out Button */
-.btn_registration_header .btn_logout {
-  background-color: #FF8370;
-  width: 50%;
-  border: 1em solid #FF8370;
-  border-radius: 3em;
-}
-
-.btn_registration_header .btn_logout a {
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 600;
-}
-
-/* Log-in Button */
-.btn_registration_header .login {
-  background-color: #FF8370;
-  width: 50%;
-  border: 1em solid #FF8370;
-  border-radius: 3em;
-}
-
-.btn_registration_header .btn_login a {
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 600;
-}
-
-/* register Button */
-.btn_registration_header .register {
-  background-color: #FF8370;
-  width: 50%;
-  border: 1em solid #FF8370;
-  border-radius: 3em;
-}
-
-.btn_registration_header .btn_register a {
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 600;
-}
 
 /****** Main - Home ******/
 
-/*** Main ***/
 main {
   width: 100%;
   padding: 0 0 4em 0;
@@ -153,133 +37,9 @@ main {
   gap: 4em;
 }
 
-/*** Hero ***/
-.wrapper_hero {
-  width: 100%;
-  min-height: 15em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Bloc - title */
-.title {
-  /* On ajoute l'image de fond pour qu'elle soit centré et qu'elle couvre lespace au lieu de se répeter */
-  background-image: url("/img/catDogfriends.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 50%;
-  min-height: 30em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* On met en position relative pour pouvoir appliquer un filtre de transparence */
-  position: relative;
-  z-index: 0;
-}
-
-/* Avec ::before on va pouvoir créer le filtre de transparence */
-.title::before {
-  content: ""; /* Pseudo-élément */
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 1;
-}
-
-.title h1 {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  font-size: 4em;
-  font-weight: 700;
-}
-
-/* Bloc - Registration */
-.visitor {
-  width: 50%;
-  padding: 3em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2em;
-}
-
-.cta_user {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-}
-
-.visitor_subscribe {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5em;
-}
-
-/* registration boutton */
-.subscribe {
-  background-color: #FF8370;
-  width: 10em;
-  text-align: center;
-  border: 1em solid #FF8370;
-  border-radius: 3em;
-}
-
-.subscribe a {
-  color: #fff;
-}
-
-.connexion {
-  color: #FF8370;
-
-}
-
-.connexion a {
-  text-decoration: underline;
-  color: #FF8370;
-}
-
-/* Bloc - Logged-in */
-.user_loggedin {
-  width: 50%;
-  padding: 3em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2em;
-}
-
-.btn_share {
-  width: 100%;
-  padding: 1em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn_share a {
-  color: #FF8370;
-  font-size: 2em;
-  font-weight: 600;
-  align-items: center;
-  justify-content: center;
-}
 
 /** What's Pawfluence ? **/
-.wrapper_what {
+.wrapperWhat {
   width: 100%;
   padding: 3em;
   display: flex;
@@ -314,8 +74,9 @@ path {
   fill: #FF8370;
 }
 
+
 /****** Post list page - "Explorer" ******/
-.wrapper_PostList {
+.wrapperPostList {
   width: 100%;
   padding: 3em 1.5em;
   display: flex;
@@ -338,19 +99,20 @@ path {
   gap: 1em;
 }
 
-
-
 .listPost {
   width: 100%;
   padding: 1em;
+}
+
+.listPost ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3em;
+  gap: 2em;
 }
 
-.btn_add {
+.btnAdd {
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -359,28 +121,34 @@ path {
   gap: 0.7em;
 }
 
-.btn_add p {
+.btnAdd p {
   color: #FF8370;
   font-size: 1.2em;
   font-weight: 600;
 }
 
-.btn_add a svg {
+.btnAdd a svg {
   border: 0.3em solid #FF8370;
   border-radius: 3em;
 }
 
-.card_post {
-  width: 100%;
-  padding: 1em;
+.cardPost {
+  width: 50%;
+  padding: 2em;
   background-color: rgba(136, 180, 140, 0.35);
+  border: 0.15em solid rgba(136, 180, 140, 0.45);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.card_post li {
+.cardPost li {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 0.8em;
+  gap: 0.3em;
 }
 
 .postTitle {
@@ -389,12 +157,24 @@ path {
   font-weight: 500;
 }
 
-.card_post a svg {
+.cardPost a svg {
   width: 1.5em;
 }
 
+.tag {
+  padding: 0.6em 0;
+}
+
+.btnInteractions {
+  padding: 0.7em 0;
+}
+
+.comment {
+  padding: 0 1em;
+}
+
 /****** Login page ******/
-.wrapper_form {
+.wrapperForm {
   width: 100%;
   padding: 3em 1.5em;
   display: flex;
@@ -431,7 +211,7 @@ form h2 {
   text-align: center;
 }
 
-.login_form {
+.loginForm {
   width: 100%;
   padding: 0 1em;
 }
@@ -473,82 +253,5 @@ input {
   text-align: center;
 }
 
-/****** footer ******/
-footer {
-  background-color: #88B48C;
-  width: 100%;
-  padding: 2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 4em;
-}
-
-.logo_footer {
-  width: 15%;
-  text-align: center;
-}
-
-.logo_footer a {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-.nav_footer {
-  width: 25%;
-}
-
-.list_footer {
-  width: 100%;
-  padding: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.3em;
-}
-
-.list_footer li {
-  width: 25%;
-}
-
-.list_footer li a {
-  color: #000;
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-/* legal mentions */
-.legal_mentions {
-  width: 45%;
-}
-
-.legal_mentions ul {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.5em;
-}
-
-.legal_mentions a {
-  color: #000;
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-.btn_registration_footer {
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.5em;
-}
 
 
