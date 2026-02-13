@@ -31,21 +31,21 @@
             </nav>
             <div class="btnRegistration">
                 {% if app.user %}
-                <div class="btn">
+                <button class="btn">
                 <a href="">Mon profil</a>
-                </div>
-                <div class="btn">
+                </button>
+                <button class="btn">
                     <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </div>
+                </button>
             </div>
                 {% else %}
             <div class="btnRegistration">
-                <div class="btn">
+                <button class="btn">
                     <a href="{{ path('app_login') }}">Connexion</a>
-                </div>
-                <div class="btn">
+                </button>
+                <button class="btn">
                     <a href="{{ path('app_register') }}">Inscription</a>
-                </div>
+                </button>
                 {% endif %}
             </div>
         </header>
@@ -72,19 +72,19 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                <div class="btn">
+                <button class="btn">
                 <a href="">Mon profil</a>
-                </div>
-                <div class="btn">
+                </button>
+                <button class="btn">
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </div>
+                </button>
                 {% else %}
-                <div class="btn">
+                <button class="btn">
                 <a href="{{ path('app_login') }}">Connexion</a>
-                </div>
-                <div class="btn">
+                </button>
+                <button class="btn">
                 <a href="{{ path('app_register') }}">Inscription</a>
-                </div>
+                </button>
                 {% endif %}
             </div>
         </footer>

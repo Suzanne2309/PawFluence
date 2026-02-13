@@ -10,22 +10,18 @@
 
 /* Bloc - title */
 .title {
-  /* On ajoute l'image de fond pour qu'elle soit centré et qu'elle couvre lespace au lieu de se répeter */
-  background-image: url("/img/catDogfriends.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   width: 50%;
-  min-height: 30em;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* On met en position relative pour pouvoir appliquer un filtre de transparence */
+}
+
+.title img { /* On place l'image en fond avec le z-index */
+  width: 100%;
   position: relative;
   z-index: 0;
 }
-
 /* Avec ::before on va pouvoir créer le filtre de transparence */
 .title::before {
   content: ""; /* Pseudo-élément */
