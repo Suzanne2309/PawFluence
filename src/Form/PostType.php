@@ -32,7 +32,7 @@ class PostType extends AbstractType
                 ]
             ])
             ->add('visuelContent', TextType::class, [
-                'label' => 'Votre image',
+                'label' => 'Votre image (URL)',
                 'attr' => [
                     'class' => 'form-control'
                 ]

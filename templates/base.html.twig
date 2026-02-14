@@ -31,9 +31,9 @@
             </nav>
             <div class="btnRegistration">
                 {% if app.user %}
-                <button class="btn">
+                {# <button class="btn">
                 <a href="">Mon profil</a>
-                </button>
+                </button> #}
                 <button class="btn">
                     <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </button>
@@ -72,9 +72,9 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                <button class="btn">
+                {# <button class="btn">
                 <a href="">Mon profil</a>
-                </button>
+                </button> #}
                 <button class="btn">
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </button>

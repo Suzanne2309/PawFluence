@@ -3,28 +3,35 @@
 {% block title %}Modification du post{% endblock %}
 
 {% block body %}
+<main>
+    <section class="wrapperForm">
+        <article class="welcomeAdd">
+            <h1>Partagez votre aventure avec nous !</h1>
+            <p>La communauté attend d'en entendre plus de votre compagnon à quattre pattes !</p>
+        </article>
 
-        <h1>Ajouter un post</h1>
+        <div class="form">
+            {{ form_start(formAddPost) }}
 
-    {{ form_start(formAddPost) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(formAddPost) }}
+            </div>
 
-    <div class="my-custom-class-for-errors">
-        {{ form_errors(formAddPost) }}
-    </div>
+            <div class="formRow">
 
-    <div class="row">
+                {{ form_row(formAddPost.postTitle) }}
 
-            {{ form_row(formAddPost.postTitle) }}
+                <div class="message">
+                    {{ form_row(formAddPost.textuelContent) }}
+                    {{ form_row(formAddPost.visuelContent) }}
+                </div>
+            </div>
+                {{ form_row(formAddPost.associatedTo) }}
 
-        <div class="col-sm">
-            {{ form_row(formAddPost.textuelContent) }}
-            {{ form_row(formAddPost.visuelContent) }}
+                {{ form_row(formAddPost.valider) }}
+
+            {{ form_end(formAddPost) }}
         </div>
-    </div>
-            {{ form_row(formAddPost.associatedTo) }}
-
-            {{ form_row(formAddPost.valider) }}
-
-    {{ form_end(formAddPost) }}
-
+    </section>
+</main>
 {% endblock %}

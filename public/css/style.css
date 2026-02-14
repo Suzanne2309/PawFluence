@@ -182,7 +182,15 @@ path {
   align-items: center;
   gap: 1.2em;
 }
-
+ .comment {
+  width: 100%;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+ }
 
 /****** Login page ******/
 .wrapperForm {
@@ -196,7 +204,7 @@ path {
 }
 
 .welcome {
-  width: 60%;
+  width: 50%;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -211,7 +219,7 @@ path {
 }
 
 form {
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -299,3 +307,5 @@ input {
   gap: 1.2em;
 }
 
+
+/****** Add post form page ******/
