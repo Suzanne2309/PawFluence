@@ -1,0 +1,24 @@
+/* General Cards */
+
+.card {
+    width: 70%;
+    padding: 2em;
+    background-color: rgba(136, 180, 140, 0.35);
+    border: 0.15em solid rgba(136, 180, 140, 0.45);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3em;
+}
+
+.cardContent {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2em;
+}

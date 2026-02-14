@@ -2,32 +2,23 @@
 .btn {
   background-color: #FF8370;
   width: 20vh;
+  padding: 0.6em;
+  font-size: 1.1em;
+  font-weight: 600;
   text-align: center;
-  border: 1em solid #FF8370;
+  border: 0.1em solid #FF8370;
   border-radius: 3em;
 }
 
 .btn a {
-  color: #fff;
-  font-size: 1.2em;
+  color: #000;
+  font-size: 1.1em;
   font-weight: 600;
-}
-
-/*** Subscribe Button ***/
-.subscribeBtn {
-  background-color: #FF8370;
-  width: 10em;
-  text-align: center;
-  border: 1em solid #FF8370;
-  border-radius: 3em;
-}
-
-.subscribeBtn a {
-  color: #fff;
 }
 
 /*** Button Share ***/
 .btnShare {
+  border: none;
   width: 100%;
   padding: 1em;
   display: flex;

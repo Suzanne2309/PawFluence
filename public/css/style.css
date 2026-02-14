@@ -2,6 +2,7 @@
 
 /* Components */
 @import url("/css/components/buttons.css");
+@import url("/css/components/card.css");
 
 /* layout */
 @import url("/css/layout/header.css");
@@ -62,7 +63,7 @@ main {
   gap: 2em;
 }
 
-.card {
+.cardWhat {
   text-align: center;
 }
 
@@ -132,19 +133,7 @@ path {
   border-radius: 3em;
 }
 
-.cardPost {
-  width: 50%;
-  padding: 2em;
-  background-color: rgba(136, 180, 140, 0.35);
-  border: 0.15em solid rgba(136, 180, 140, 0.45);
-  border-radius: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardPost li {
+.card li {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -157,7 +146,7 @@ path {
   font-weight: 500;
 }
 
-.cardPost a svg {
+.card a svg {
   width: 1.5em;
 }
 
@@ -172,6 +161,28 @@ path {
 .comment {
   padding: 0 1em;
 }
+
+/****** Show post page ******/
+.postDetailWrapper {
+  width: 100%;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.commentWrapper {
+  width: 100%;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
 
 /****** Login page ******/
 .wrapperForm {
@@ -224,7 +235,7 @@ form h2 {
 }
 
 input {
-  width: 30vh;
+  width: 60%;
   padding: 0.5em;
   background-color: rgb(255, 131, 112, 0.1);
   border: 0.1em solid rgb(255, 131, 112, 0.1);
@@ -253,5 +264,38 @@ input {
   text-align: center;
 }
 
+/****** Add comment form page ******/
+.welcomeAdd h1 {
+  font-size: 2.3em;
+  font-weight: 800;
+}
 
+.welcomeAdd p {
+  font-size: 1.7em;
+  font-weight: 600;
+}
+
+.formRow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.form-control {
+  background-color: rgba(255, 131, 112, 0.1);
+  width: 60%;
+  border: 0.1em solid rgba(255, 131, 112, 0.1);
+  border-radius: 2.5em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
 

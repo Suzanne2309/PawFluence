@@ -33,7 +33,7 @@ class CommentType extends AbstractType
             ->add('valider', SubmitType::class, [
                 'label' => 'Publier',
                 'attr' => [
-                'class' => 'btn btn-primary']
+                'class' => 'btn']
             ])
         ;
     }

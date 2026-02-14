@@ -148,4 +148,60 @@ final class PostController extends AbstractController
             'formAddComment' => $form->createView(), //Twig ne popuvant pas traiter directement de la logique métier, la méthode createView va permettre de créer un objet formulaire pour que Twig puisse accéder au champs et envoyé les données
         ]);
     }
+
+    //Fonction pour editer un poste spécifique
+    #[Route('/comment/{id}/edit', name: 'edit_comment')] //On crée la route vers la fonction
+    #[IsGranted('edit', 'comment')] //Si l'URL contient l'action edit et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    public function editComment(Comment $comment = null, Request $request, CommentRepository $commentRepository, EntityManagerInterface $em): Response
+    {   
+        if ($comment->getCommentUser() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
+            // throw $this->createAccessDeniedException(); Alors on donne accées pour éxecuter le reste de l'action
+            /* var_dump($post->getUserOfPost(), $this->getUser()); die(); */
+            $this->addFlash(
+                'notice',
+                'Vous n`avez pas le droit d`editer ce commentaire !'
+            );
+            return $this->redirectToRoute('app_post');
+        }
+
+        $form = $this->createForm(CommentType::class, $comment); //On crée un nouveau formulaire post avec le fichier PostType  
+
+        $form->handleRequest($request); //On va relier la requête HTTP avec notre formulaire (Permettant à symfony de faire les vérifications nécessaire et hydrater l'objet Post qui a été crée avec les nouvelles données)
+        
+        if ($form->isSubmitted() && $form->isValid()) { //SI les données du formulaire sont soumis et qu'elles sont validé
+            $comment = $form->getData(); //ALORS post va récupérer les données du formulaire
+            $em->persist($comment); //Puis on prépare la requête d'ajout
+            $em->flush(); //Et on enregistre le tout dans la base de données
+
+            return $this->redirectToRoute('app_post'); //Une fois que l'ajout est terminé, on renvoie à la fonction des lists des posts
+        }
+
+        return $this->render('post/addComment.html.twig', [ //On envoie sur la page addPost qui contient le formulaire pour ajouter un nouveau post
+            'formAddComment' => $form->createView(), //Twig ne popuvant pas traiter directement de la logique métier, la méthode createView va permettre de créer un objet formulaire pour que Twig puisse accéder au champs et envoyé les données
+            'edit' => $comment->getId(),
+        ]);
+    }
+
+    //Fonction pour supprimer un commentaire
+    #[Route('/comment/{id}/delete', name: 'delete_comment')]
+    #[IsGranted('delete', 'comment')] //Si l'URL contient l'action delete et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    public function deleteComment(Comment $comment, EntityManagerInterface $em)
+    { 
+        if ($comment->getCommentUser() !== $this->getUser()) { //Si On clique sur le bouton de suppression, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
+            $this->addFlash(
+                'notice',
+                'Vous n`avez pas le droit de supprimer ce commentaire !'
+            );
+            return $this->redirectToRoute('app_post');
+        }
+        $user = $this->getUser();
+        if (!$user) { //S'il n'y a pas d'utilisateur connecté 
+            return $this->redirectToRoute('app_login'); //Alors on renvoit l'utilisateur vers la page de log-in
+        }
+
+        $em->remove($comment);
+        $em->flush();
+
+        return $this->redirectToRoute('app_post');
+    }
 }

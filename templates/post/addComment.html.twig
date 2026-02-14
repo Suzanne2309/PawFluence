@@ -4,24 +4,33 @@
 
 {% block body %}
 
-        <h1>Ajouter un commentaire</h1>
+<main>
+    <section class="wrapperForm">
+        <article class="welcomeAdd">
+            <h1>Quel est votre réponse ?</h1>
+            <p>Ajoutez un commentaire !</p>
+        </article>
 
-    {{ form_start(formAddComment) }}
+        <div class="form">
+            {{ form_start(formAddComment) }}
 
-    <div class="my-custom-class-for-errors">
-        {{ form_errors(formAddComment) }}
-    </div>
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(formAddComment) }}
+                </div>
 
-    <div class="row">
+                <div class="formRow">
 
-            {{ form_row(formAddComment.commentTitle) }}
+                    {{ form_row(formAddComment.commentTitle) }}
 
-        <div class="col-sm">
-            {{ form_row(formAddComment.message) }}
+                    <div class="message">
+                        {{ form_row(formAddComment.message) }}
+                    </div>
+                </div>
+            
+                {{ form_row(formAddComment.valider) }}
+
+            {{ form_end(formAddComment) }}
         </div>
-    </div>
-            {{ form_row(formAddComment.valider) }}
-
-    {{ form_end(formAddComment) }}
-
+    </section>
+</main>
 {% endblock %}

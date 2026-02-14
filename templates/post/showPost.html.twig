@@ -3,35 +3,130 @@
 {% block title %}Détail d'un post{% endblock %}
 
 {% block body %}
-
-<div class="post-wrapper">
-
-    <article>
-        <h1>Détail du Post "{{ post }}"</h1>
-
-        <p>{{ post.textuelContent }}</p>
-        <p>{{ post.userOfPost }}, {{ post.publicationDateFr }}</p>
-    </article>
-
-    {% if app.user %}
-    <article class="edit">
-        <h2>Vous voulez apporter des détails en plus ou en retirer ? Commençons par cliquer sur le bouton ci-dessous !</h2>
-        <a href=" {{ path('edit_post', {'id':post.id}) }} ">Editer</a>
-    </article>
-    {% endif %}
-</div>
-
-<div class="comment-wrapper">
-    {% for comment in comments %}
-        {{comment}} <br>
-        {{comment.message}} <br>
-        {{comment.commentUser}}, 
-        {{comment.publicationDateFr}} {% if app.user is same as(comment.commentUser) %} <a href="">Editer</a> <a href="">X</a>{% endif %} <br>
-    {% endfor %}
-    <br>
-    {% if app.user %}
-    <a href="{{ path('add_comment', {'id':post.id}) }}">Ajouter</a>
-    {% endif %}
-</div>
-
+<main>
+    <!-- HERO -->
+    <section class="wrapperHero">
+        <div class="title">
+            <H1>Bienvenue {% if app.user %}{{app.user}}{% endif %}, chez Pawfluence !</H1>
+            <img src="/img/catDogfriends.webp" alt="Un chien et un chat couché ensemble" loading="lazy">
+        </div>
+        {% if app.user %}
+        <section class="userLoggedin">
+            <article class="ctaUser">
+                <h2>Qu'elle était vos aventures avec votre humain aujourd'hui ? </h2>
+                <p>La communauté serait curieuse d'en savoir plus. Cliquez ci-dessous !</p>
+            </article>
+            <div class="btnShare">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                    <path d="M371.8 82.4C359.8 87.4 352 99 352 112L352 192L240 192C142.8 192 64 270.8 64 368C64 481.3 145.5 531.9 164.2 542.1C166.7 543.5 169.5 544 172.3 544C183.2 544 192 535.1 192 524.3C192 516.8 187.7 509.9 182.2 504.8C172.8 496 160 478.4 160 448.1C160 395.1 203 352.1 256 352.1L352 352.1L352 432.1C352 445 359.8 456.7 371.8 461.7C383.8 466.7 397.5 463.9 406.7 454.8L566.7 294.8C579.2 282.3 579.2 262 566.7 249.5L406.7 89.5C397.5 80.3 383.8 77.6 371.8 82.6z"/>
+                </svg>
+                <a href="{{ path('add_post') }}">Partager</a>
+            </div>
+        </section>
+        {% else %}
+        <section class="visitor">
+            <article class="ctaUser">
+                <h2>Rejoignez le réseau :</h2>
+                <p>Attention, risque élevé de ronrons et de coups de pattes créatives !</p>
+            </article>
+            <div class="visitorSubscribe">
+                <div class="btn">
+                <a href="{{ path('app_register') }}">Créer un compte</a>
+                </div>
+                <div class="connexion">
+                <p class="">Vous êtes déjà membre ? <a href="{{ path('app_login') }}" class="underline">Connectez-vous</a> !</p>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        </div>
+    </section>
+    <!-- Post detail -->
+    <div class="postDetailWrapper">
+        <div class="card">
+            <article class="userInfo">
+                <h3><strong>{{ post.userOfPost }}</strong></h3>
+                <p>publié le {{ post.publicationDateFr }}</p>
+            </article>
+            <article class="cardContent">
+                <h1>Détail du Post "{{ post }}"</h1>
+                <p>{{ post.textuelContent }}</p>
+            {% for tag in post.associatedTo %}
+                <p class="tag">#{{ tag.tagName }}</p>
+            {% endfor %}
+            </article>
+            {% if app.user %}
+            <div class="btnInteractions">
+                {# <a class="follow" href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path d="M136 192C136 125.7 189.7 72 256 72C322.3 72 376 125.7 376 192C376 258.3 322.3 312 256 312C189.7 312 136 258.3 136 192zM48 546.3C48 447.8 127.8 368 226.3 368L285.7 368C384.2 368 464 447.8 464 546.3C464 562.7 450.7 576 434.3 576L77.7 576C61.3 576 48 562.7 48 546.3zM544 160C557.3 160 568 170.7 568 184L568 232L616 232C629.3 232 640 242.7 640 256C640 269.3 629.3 280 616 280L568 280L568 328C568 341.3 557.3 352 544 352C530.7 352 520 341.3 520 328L520 280L472 280C458.7 280 448 269.3 448 256C448 242.7 458.7 232 472 232L520 232L520 184C520 170.7 530.7 160 544 160z"/>
+                    </svg>
+                </a> #}
+                <a class="comment" href="{{ path('add_comment', {'id':post.id}) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path d="M64 416L64 192C64 139 107 96 160 96L480 96C533 96 576 139 576 192L576 416C576 469 533 512 480 512L360 512C354.8 512 349.8 513.7 345.6 516.8L230.4 603.2C226.2 606.3 221.2 608 216 608C202.7 608 192 597.3 192 584L192 512L160 512C107 512 64 469 64 416z"/>
+                    </svg>
+                </a>
+                <a class="ban" href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM320 384C302.3 384 288 398.3 288 416C288 433.7 302.3 448 320 448C337.7 448 352 433.7 352 416C352 398.3 337.7 384 320 384zM320 192C301.8 192 287.3 207.5 288.6 225.7L296 329.7C296.9 342.3 307.4 352 319.9 352C332.5 352 342.9 342.3 343.8 329.7L351.2 225.7C352.5 207.5 338.1 192 319.8 192z"/>
+                    </svg>
+                </a>
+                {% if app.user is same as(post.UserOfPost) %}
+                <a class="edit" href=" {{ path('edit_post', {'id':post.id}) }} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path d="M535.6 85.7C513.7 63.8 478.3 63.8 456.4 85.7L432 110.1L529.9 208L554.3 183.6C576.2 161.7 576.2 126.3 554.3 104.4L535.6 85.7zM236.4 305.7C230.3 311.8 225.6 319.3 222.9 327.6L193.3 416.4C190.4 425 192.7 434.5 199.1 441C205.5 447.5 215 449.7 223.7 446.8L312.5 417.2C320.7 414.5 328.2 409.8 334.4 403.7L496 241.9L398.1 144L236.4 305.7zM160 128C107 128 64 171 64 224L64 480C64 533 107 576 160 576L416 576C469 576 512 533 512 480L512 384C512 366.3 497.7 352 480 352C462.3 352 448 366.3 448 384L448 480C448 497.7 433.7 512 416 512L160 512C142.3 512 128 497.7 128 480L128 224C128 206.3 142.3 192 160 192L256 192C273.7 192 288 177.7 288 160C288 142.3 273.7 128 256 128L160 128z"/>
+                    </svg>
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Comments -->
+    <div class="commentWrapper">
+        <Section class="comment">
+        {% for comment in comments %}
+            <div class="card">
+                <article class="cardContent">
+                <h3><strong>{{comment.commentUser}}</strong></h3>
+                <h2>{{comment}}</h2>
+                <p>{{comment.message}}</p>
+                <p>Publié le {{comment.publicationDateFr}}</p>
+                </article>
+                <div class="btnInteractions">
+                    {# <a class="comment" href="{{ path('add_comment', {'id':post.id}) }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path d="M64 416L64 192C64 139 107 96 160 96L480 96C533 96 576 139 576 192L576 416C576 469 533 512 480 512L360 512C354.8 512 349.8 513.7 345.6 516.8L230.4 603.2C226.2 606.3 221.2 608 216 608C202.7 608 192 597.3 192 584L192 512L160 512C107 512 64 469 64 416z"/>
+                        </svg>
+                    </a> #}
+                    {% if app.user is same as(comment.commentUser) %}
+                     <a class="edit" href="{{ path('edit_comment', {'id':comment.id}) }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path d="M535.6 85.7C513.7 63.8 478.3 63.8 456.4 85.7L432 110.1L529.9 208L554.3 183.6C576.2 161.7 576.2 126.3 554.3 104.4L535.6 85.7zM236.4 305.7C230.3 311.8 225.6 319.3 222.9 327.6L193.3 416.4C190.4 425 192.7 434.5 199.1 441C205.5 447.5 215 449.7 223.7 446.8L312.5 417.2C320.7 414.5 328.2 409.8 334.4 403.7L496 241.9L398.1 144L236.4 305.7zM160 128C107 128 64 171 64 224L64 480C64 533 107 576 160 576L416 576C469 576 512 533 512 480L512 384C512 366.3 497.7 352 480 352C462.3 352 448 366.3 448 384L448 480C448 497.7 433.7 512 416 512L160 512C142.3 512 128 497.7 128 480L128 224C128 206.3 142.3 192 160 192L256 192C273.7 192 288 177.7 288 160C288 142.3 273.7 128 256 128L160 128z"/>
+                        </svg>
+                    </a>
+                    <a href="{{ path('delete_comment', {'id':comment.id}) }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path d="M232.7 69.9C237.1 56.8 249.3 48 263.1 48L377 48C390.8 48 403 56.8 407.4 69.9L416 96L512 96C529.7 96 544 110.3 544 128C544 145.7 529.7 160 512 160L128 160C110.3 160 96 145.7 96 128C96 110.3 110.3 96 128 96L224 96L232.7 69.9zM128 208L512 208L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 208zM216 272C202.7 272 192 282.7 192 296L192 488C192 501.3 202.7 512 216 512C229.3 512 240 501.3 240 488L240 296C240 282.7 229.3 272 216 272zM320 272C306.7 272 296 282.7 296 296L296 488C296 501.3 306.7 512 320 512C333.3 512 344 501.3 344 488L344 296C344 282.7 333.3 272 320 272zM424 272C410.7 272 400 282.7 400 296L400 488C400 501.3 410.7 512 424 512C437.3 512 448 501.3 448 488L448 296C448 282.7 437.3 272 424 272z"/>
+                        </svg>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </Section>
+        <section class="subComment">
+            <!-- sous-commentaire -->
+        </section>
+    </div>
+</main>
 {% endblock %}
