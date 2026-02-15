@@ -17,6 +17,11 @@ footer {
   text-align: center;
 }
 
+.logoFooter img {
+  width: 8em;
+  text-align: center;
+}
+
 .logoFooter a {
   color: #000;
   font-size: 1.1em;

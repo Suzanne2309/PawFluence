@@ -1,5 +1,5 @@
 /*** Mobile ***/
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     main {
         padding: 0.5em;
     }
@@ -14,6 +14,57 @@
     }
     .btnRegistration {
         width: 35%;
+    }
+    
+    /**** menu burger ****/
+    #principal {
+        display: none;
+        background-color: rgba(255, 131, 112, 0.9);
+        width: 100%;
+        padding: 0.2em;
+        position: absolute;
+        top: 11em;
+        left: 0;
+        bottom: -5em;
+        z-index: 3;
+    }
+
+    #principal ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #principal li {
+        width: 100%;
+        font-size: 2.5em;
+    }
+
+    #burger {
+        display: block;
+        width: 15%;
+        height: 15%;
+        position: relative;
+    }
+
+    #burger .lines {
+        width: 50%;
+        position: absolute;
+        top: -0.7em;
+        right: 1em;
+    }
+
+    #burger .lines path {
+        color: #fff;
+    }
+
+    #burger .cross {
+        display: none;
+        width: 50%;
+        position: absolute;
+        top: -0.7em;
+        right: 1em;
     }
 
     /* hero */
@@ -56,6 +107,24 @@
         padding: 0.5em;
     }
 
+    /* Login form */
+    .wrapperForm {
+        width: 100%;
+        padding: 1.5em 0.5em;
+        flex-direction: column;
+    }
+    .welcome {
+        width: 100%;
+    }
+    form {
+        width: 100%;
+    }
+
+    /* Register form */
+    .form {
+        width: 100%;
+        padding: 1em;
+    }
 
     /* footer */
     footer {
@@ -69,5 +138,21 @@
     }
     .listFooter {
         flex-direction: row;
+    }
+}
+
+@media only screen and (min-width: 801px ) and (max-width: 1025px) {
+    /* List post - Explorer */
+    .wrapperPostList {
+        width: 100%;
+        padding: 2em 1.2em;
+    }
+    .titlePost {
+        width: 90%;
+        padding: 0.6em;
+    }
+    .card {
+        width: 80%;
+        padding: 0.5em;
     }
 }

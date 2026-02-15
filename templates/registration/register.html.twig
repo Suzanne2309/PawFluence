@@ -29,7 +29,11 @@
                     {{ form_row(registrationForm.plainPassword, {
                         label: 'Password'
                     }) }}
-                {{ form_row(registrationForm.agreeTerms) }}
+                <div class="checkboxRow">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    {{ form_label(registrationForm.agreeTerms) }}
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                </div>
 
                 <button type="submit" class="submit">Inscrire</button>
 
