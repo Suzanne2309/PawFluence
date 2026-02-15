@@ -9,6 +9,9 @@
 @import url("/css/layout/footer.css");
 @import url("/css/layout/hero.css");
 
+@import url("/css/layout/mediaquery.css");
+
+
 /****** global ******/
 * {
   padding: 0;
@@ -78,7 +81,7 @@ path {
 
 /****** Post list page - "Explorer" ******/
 .wrapperPostList {
-  width: 100%;
+  width: 70%;
   padding: 3em 1.5em;
   display: flex;
   flex-direction: column;
@@ -156,6 +159,11 @@ path {
 
 .btnInteractions {
   padding: 0.7em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7em;
 }
 
 .comment {

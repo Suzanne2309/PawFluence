@@ -1,0 +1,73 @@
+/*** Mobile ***/
+@media only screen and (max-width: 750px) {
+    main {
+        padding: 0.5em;
+    }
+    /* buttons */
+    .btn {
+        width: 15vh;
+    }
+
+    /* header */
+    .navHeader {
+        width: 30%;
+    }
+    .btnRegistration {
+        width: 35%;
+    }
+
+    /* hero */
+    .wrapperHero {
+        flex-direction: column;
+    }
+    .title {
+        width: 100%;
+    }
+    .visitor {
+        width: 100%;
+    }
+
+    /* What's Pawfluence */
+    .wrapperWhat {
+        padding: 1em;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .what {
+        width: 100%;
+        text-align: center;
+    }
+    .objectifs {
+        width: 100%;
+        
+    }
+
+    /* List post - Explorer */
+    .wrapperPostList {
+        width: 100%;
+        padding: 1em 0.5em;
+    }
+    .titlePost {
+        width: 100%;
+        padding: 0.6em;
+    }
+    .card {
+        width: 100%;
+        padding: 0.5em;
+    }
+
+
+    /* footer */
+    footer {
+        flex-direction: column;
+    }
+    .logoFooter {
+        width: 100%;
+    }
+    .navFooter {
+        width: 100%;
+    }
+    .listFooter {
+        flex-direction: row;
+    }
+}
