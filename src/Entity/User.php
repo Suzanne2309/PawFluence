@@ -212,12 +212,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->_description;
     }
 
     public function setDescription(?string $description): static
     {
-        $this->description = $description;
+        $this->_description = $description;
 
         return $this;
     }

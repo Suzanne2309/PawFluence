@@ -34,9 +34,9 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                {# <button class="btn">
-                <a href="">Mon profil</a>
-                </button> #}
+                <button class="btn">
+                <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
+                </button>
                 <button class="btn">
                     <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </button>
@@ -77,9 +77,9 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                {# <button class="btn">
-                <a href="">Mon profil</a>
-                </button> #}
+                <button class="btn">
+                <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
+                </button>
                 <button class="btn">
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
                 </button>

@@ -123,7 +123,7 @@ final class PostController extends AbstractController
         ]);
     }
 
-    //Fonction pour ajouter un post et editer un poste spécifique
+    //Fonction pour ajouter un comentaire et editer un commentaire spécifique
     #[Route('/comment/{id}/add', name: 'add_comment')] //On crée la route vers la fonction
     public function addComment(Post $post, Request $request, CommentRepository $commentRepository, EntityManagerInterface $em): Response
     {

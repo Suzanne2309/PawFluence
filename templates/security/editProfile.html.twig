@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profile{% endblock %}
+
+{% block body %}
+<main>
+    <section class="wrapperForm">
+        <article class="welcomeAdd">
+            <h1>Changeons vos informations !</h1>
+            <p>Voous pouvez modifier les informations ici présent. Pour d'autres informations comme le pseudo ou vos données confidentiel, veuillez nous contacter !</p>
+        </article>
+
+        <div class="form">
+            {{ form_start(formEditProfile) }}
+
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(formEditProfile) }}
+            </div>
+
+            <div class="formRow">
+                {{ form_row(formEditProfile.avatar) }}
+
+                {{ form_row(formEditProfile._description) }}
+            </div>
+                {{ form_row(formEditProfile.tagFollow) }}
+
+                {{ form_row(formEditProfile.valider) }}
+
+            {{ form_end(formEditProfile) }}
+        </div>
+    </section>
+</main>
+{% endblock %}
