@@ -150,6 +150,7 @@ path {
   gap: 1.2em;
 }
 
+/** Comments Section **/
 .commentWrapper {
   width: 100%;
   padding: 1.5em;
@@ -159,7 +160,7 @@ path {
   align-items: center;
   gap: 1.2em;
 }
- .comment {
+.comment {
   width: 100%;
   padding: 1.5em;
   display: flex;
@@ -168,6 +169,7 @@ path {
   align-items: center;
   gap: 1.2em;
  }
+
 
 /****** Login page ******/
 .wrapperForm {

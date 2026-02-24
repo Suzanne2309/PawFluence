@@ -2,17 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\Post;
-use App\Form\PostType;
 use App\Entity\Comment;
+use App\Entity\Post;
 use App\Form\CommentType;
-use App\Repository\PostRepository;
+use App\Form\PostType;
 use App\Repository\CommentRepository;
+use App\Repository\PostRepository;
+use App\Repository\SubCommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class PostController extends AbstractController
 {
@@ -113,15 +114,23 @@ final class PostController extends AbstractController
 
     //Fonction pour afficher le détail d'un post
     #[Route('/post/{id}/show', name: 'show_post')]
-    public function showPost(Post $post, CommentRepository $commentRepository): Response
+    public function showPost(Post $post, Comment $comment, CommentRepository $commentRepository, SubCommentRepository $subCommentRepository): Response
     {
-        $comments = $commentRepository->findBy([], ['commentTitle' => 'ASC']);
+        //Afficher les commentaires
+        $comments = $commentRepository->findBy(['realtedPost' => $post], ['publicationDate' => 'DESC']);
+
+        //Afficher les sous-commentaire
+        $subComments = $subCommentRepository->findBy(['comment' => $comment], ['publicationDate' => 'DESC']);
 
         return $this->render('post/showPost.html.twig', [
             'post' => $post,
+            'comment' => $comment,
             'comments' => $comments,
+            'subComments' => $subComments,
         ]);
     }
+
+    //Section Commentaire
 
     //Fonction pour ajouter un comentaire et editer un commentaire spécifique
     #[Route('/comment/{id}/add', name: 'add_comment')] //On crée la route vers la fonction
@@ -204,4 +213,8 @@ final class PostController extends AbstractController
 
         return $this->redirectToRoute('app_post');
     }
+
+    //Section de sous-commentaire
+
+
 }
