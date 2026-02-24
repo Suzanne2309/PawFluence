@@ -39,6 +39,20 @@ class SecurityController extends AbstractController
 
     }
 
+
+    //Fonction pour afficher la liste des profils
+    #[Route('/user', name: 'app_user')] //On crée la route vers la fonction
+    public function index(UserRepository $userRepository): Response
+    {
+
+        //Le tableau $posts va contenir les résultats de recherche des posts par titre de post
+        $users = $userRepository->findBy([], ['pseudo' => 'ASC']);
+
+        return $this->render('security/listProfiles.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
     //Fonction pour modifier un profile
     #[Route('/user/{id}/edit', name: 'edit_user')] //On crée la route vers la fonction
     #[IsGranted('edit', 'user')] //Si l'URL contient l'action edit et l'objet user alors on va vérifier si l'utilisateur et le même que celui du compte

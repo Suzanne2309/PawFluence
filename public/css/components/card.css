@@ -22,3 +22,22 @@
     align-items: center;
     gap: 1.2em;
 }
+
+.userCard {
+    width: 100%;
+    padding: 2em;
+    background-color: rgba(136, 180, 140, 0.25);
+    border: 0.15em solid rgba(136, 180, 140, 0.25);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3em;
+}
+
+.userCard img {
+  width: 50%;
+  border: #fff solid 0.1em;
+  border-radius: 100%;
+}

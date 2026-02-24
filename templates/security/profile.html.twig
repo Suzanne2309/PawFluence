@@ -15,10 +15,10 @@
         </div>
         <div class="profileExtra">
             <div class="description">
-                {% if app.user.description %}
-                    <p>{{ user.description }}</p>
-                {% else %}
+                {% if app.user.description is empty %}
                     <p>Vous n'avez pas encore choisi de description !</p>
+                {% else %}
+                    <p>{{ user.description }}</p>
                 {% endif %}
             </div>
             <div class="profileAction">
