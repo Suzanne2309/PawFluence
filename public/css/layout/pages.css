@@ -290,3 +290,57 @@ input:not([type="checkbox"]) {
   flex-direction: column;
   gap: 1.2em;
 }
+
+/****** Profile page ******/
+.profile {
+ width: 100%;
+ padding: 3em;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+}
+
+.avatarCard {
+  width: 50%;
+  padding: 2em;
+  border: #FF8370 solid 0.3em;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.avatarCard img {
+  width: 50%;
+  border: #fff solid 0.1em;
+  border-radius: 70%;
+}
+
+.profileExtra {
+  width: 50%;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.profilePost {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.profilePost h2 {
+  color: #FF8370;
+  text-decoration: underline;
+} 
+
+/****** Edit profile form page ******/
