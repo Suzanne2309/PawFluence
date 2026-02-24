@@ -49,9 +49,9 @@ class SecurityController extends AbstractController
             /* var_dump($post->getUserOfPost(), $this->getUser()); die(); */
             $this->addFlash(
                 'notice',
-                'Vous n`avez pas le droit d`editer ce post !'
+                'Vous n`avez pas le droit d`editer ce profil !'
             );
-            return $this->redirectToRoute('app_post');
+            return $this->redirectToRoute('show_user');
         }
 
         $form = $this->createForm(ProfileType::class, $user); //On crée un nouveau formulaire post avec le fichier PostType  
@@ -78,7 +78,7 @@ class SecurityController extends AbstractController
     #[Route('/user/{id}/show', name: 'show_user')]
     public function showUser(User $user, PostRepository $postRepository): Response
     {
-        $post = $postRepository->findOneBy(['userOfPost' => $user], ['publicationDate' => 'DESC'], 1);
+        $post = $postRepository->findOneBy(['userOfPost' => $user], ['publicationDate' => 'DESC']);
 
         return $this->render('security/profile.html.twig', [
             'user' => $user,
