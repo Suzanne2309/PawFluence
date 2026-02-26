@@ -23,7 +23,6 @@
             <nav class="navHeader" id="principal">
                 <ul class="listHeader">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    {# <li><a href="">Pour vous</a></li> #}
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
                     <li><a href="{{ path('app_user') }}">Les Pawfluencers</a></li>
                 </ul>
@@ -35,21 +34,21 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                <button class="btn">
+                <div class="btn">
                 <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
-                </button>
-                <button class="btn">
+                </div>
+                <div class="btn">
                     <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </button>
+                </div>
             </div>
                 {% else %}
             <div class="btnRegistration">
-                <button class="btn">
+                <div class="btn">
                     <a href="{{ path('app_login') }}">Connexion</a>
-                </button>
-                <button class="btn">
+                </div>
+                <div class="btn">
                     <a href="{{ path('app_register') }}">Inscription</a>
-                </button>
+                </div>
                 {% endif %}
             </div>
         </header>
@@ -65,7 +64,6 @@
             <nav class="navFooter">
                 <ul class="listFooter">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    {# <li><a href="">Pour vous</a></li> #}
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
                     <li><a href="{{ path('app_user') }}">Les Pawfluencers</a></li>
                 </ul>
@@ -79,19 +77,19 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                <button class="btn">
+                <div class="btn">
                 <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
-                </button>
-                <button class="btn">
+                </div>
+                <div class="btn">
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </button>
+                </div>
                 {% else %}
-                <button class="btn">
+                <div class="btn">
                 <a href="{{ path('app_login') }}">Connexion</a>
-                </button>
-                <button class="btn">
+                </div>
+                <div class="btn">
                 <a href="{{ path('app_register') }}">Inscription</a>
-                </button>
+                </div>
                 {% endif %}
             </div>
         </footer>

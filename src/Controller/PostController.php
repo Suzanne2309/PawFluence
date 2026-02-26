@@ -114,19 +114,17 @@ final class PostController extends AbstractController
 
     //Fonction pour afficher le détail d'un post
     #[Route('/post/{id}/show', name: 'show_post')]
-    public function showPost(Post $post, Comment $comment, CommentRepository $commentRepository, SubCommentRepository $subCommentRepository): Response
+    public function showPost(Post $post, CommentRepository $commentRepository, SubCommentRepository $subCommentRepository): Response
     {
         //Afficher les commentaires
         $comments = $commentRepository->findBy(['realtedPost' => $post], ['publicationDate' => 'DESC']);
 
         //Afficher les sous-commentaire
-        $subComments = $subCommentRepository->findBy(['comment' => $comment], ['publicationDate' => 'DESC']);
+        /* $subComments = $subCommentRepository->findBy(['comment' => $comment], ['publicationDate' => 'DESC']); */
 
         return $this->render('post/showPost.html.twig', [
             'post' => $post,
-            'comment' => $comment,
             'comments' => $comments,
-            'subComments' => $subComments,
         ]);
     }
 

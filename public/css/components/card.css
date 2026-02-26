@@ -23,6 +23,19 @@
     gap: 1.2em;
 }
 
+.postCard {
+    width: 50%;
+    padding: 2em;
+    background-color: rgba(37, 114, 43, 0.35);
+    border: 0.15em solid rgba(37, 114, 43, 0.45);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3em;
+}
+
 .userCard {
     width: 100%;
     padding: 2em;

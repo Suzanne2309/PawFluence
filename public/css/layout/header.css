@@ -58,7 +58,9 @@ header {
 
 /* Menu burger (caché) */
 #burger {
-    display: none;
+  width: 100%;
+  padding: 0 2em;
+  display: none;
 }
 
 /* buttons */

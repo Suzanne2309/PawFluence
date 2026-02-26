@@ -60,10 +60,10 @@ path {
 }
 
 .titlePost {
-  background-color: rgba(255, 131, 112, 0.3);
+  background-color: rgba(63, 57, 54, 0.1);
   width: 65%;
   padding: 1.2em;
-  border: 0.1em solid rgba(255, 131, 112, 0.3);
+  border: 0.1em solid rgba(63, 57, 54, 0.1);
   border-radius: 1em;
   display: flex;
   flex-direction: column;

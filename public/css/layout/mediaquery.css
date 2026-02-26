@@ -8,6 +8,11 @@
         width: 15vh;
     }
 
+    .btn a {
+        text-align: center;
+        font-size: 0.9em;
+    }
+
     /* header */
     .navHeader {
         width: 30%;
@@ -102,6 +107,12 @@
         width: 100%;
         padding: 0.6em;
     }
+
+    .postCard {
+        width: 100%;
+        padding: 0.5em;
+    }
+
     .card {
         width: 100%;
         padding: 0.5em;
