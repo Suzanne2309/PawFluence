@@ -24,7 +24,7 @@
                 <ul class="listHeader">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="{{ path('app_user') }}">Les Pawfluencers</a></li>
+                    <li><a href="{{ path('app_user') }}">Pawfluencers</a></li>
                 </ul>
             </nav>
             {# Menu burger #}
@@ -65,17 +65,17 @@
                 <ul class="listFooter">
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
                     <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="{{ path('app_user') }}">Les Pawfluencers</a></li>
+                    <li><a href="{{ path('app_user') }}">Pawfluencers</a></li>
                 </ul>
             </nav>
             <div class="legalMentions">
                 <ul>
                     <li><span>@2025 Suzanne Pons</span></li>
-                    <li><a href="">Confidentialités et cookies</a></li>
-                    <li><a href="">Gestion conseils d'utilisation</a></li>
+                    <li><a href="">Conditions générales d'utilisation (CGU)</a></li>
+                    <li><a href="">politique de confidentialité (Cookies)</a></li>
                 </ul>
             </div>
-            <div class="btnRegistration">
+            <div class="btnRegistrationFooter">
                 {% if app.user %}
                 <div class="btn">
                 <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>

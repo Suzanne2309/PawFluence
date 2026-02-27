@@ -65,6 +65,14 @@
   gap: 0.5em;
 }
 
+.ctaUser h2 {
+  text-align: center;
+}
+
+.ctaUser p {
+  text-align: center;
+}
+
 .visitorSubscribe {
   width: 100%;
   display: flex;
@@ -107,20 +115,3 @@
   align-items: center;
   gap: 2em;
 }
-/* 
-.btnShare {
-  width: 100%;
-  padding: 1em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.btnShare a {
-  color: #FF8370;
-  font-size: 2em;
-  font-weight: 600;
-  align-items: center;
-  justify-content: center;
-} */
