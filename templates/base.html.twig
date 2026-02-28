@@ -34,21 +34,13 @@
             </div>
             <div class="btnRegistration">
                 {% if app.user %}
-                <div class="btn">
-                <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
-                </div>
-                <div class="btn">
-                    <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </div>
+                <a class="btn" href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
+                    <a class="btn" href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
                 {% else %}
             <div class="btnRegistration">
-                <div class="btn">
-                    <a href="{{ path('app_login') }}">Connexion</a>
-                </div>
-                <div class="btn">
-                    <a href="{{ path('app_register') }}">Inscription</a>
-                </div>
+                    <a class="btn" href="{{ path('app_login') }}">Connexion</a>
+                    <a class="btn" href="{{ path('app_register') }}">Inscription</a>
                 {% endif %}
             </div>
         </header>
@@ -77,19 +69,11 @@
             </div>
             <div class="btnRegistrationFooter">
                 {% if app.user %}
-                <div class="btn">
-                <a href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
-                </div>
-                <div class="btn">
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-                </div>
+                <a class="btn" href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
+                <a class="btn" href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-                <div class="btn">
-                <a href="{{ path('app_login') }}">Connexion</a>
-                </div>
-                <div class="btn">
-                <a href="{{ path('app_register') }}">Inscription</a>
-                </div>
+                <a class="btn" href="{{ path('app_login') }}">Connexion</a>
+                <a class="btn" href="{{ path('app_register') }}">Inscription</a>
                 {% endif %}
             </div>
         </footer>

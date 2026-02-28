@@ -3,6 +3,8 @@
   background-color: #FF8370;
   width: 20vh;
   padding: 0.6em;
+  text-decoration: none;
+  color: #000;
   font-size: 1.1em;
   font-weight: 600;
   text-align: center;
@@ -13,10 +15,12 @@
   align-items: center;
 }
 
+.btn:hover {
+  box-shadow:0 8px 16px 0 rgba(75, 30, 17, 0.6)
+}
+
 .btn a {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: 600;
+
 }
 
 /*** Button Share ***/
