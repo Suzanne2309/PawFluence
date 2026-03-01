@@ -62,7 +62,8 @@ span {
 }
 
 .listFooter li a:hover {
-  font-size: 1.4em;
+  color: #525050;
+  transition: 0.5s ease-in-out;
 }
 
 /* legal mentions */
