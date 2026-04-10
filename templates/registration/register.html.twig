@@ -1,44 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription | Pawfluence{% endblock %}
 
 {% block body %}
 <main>
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-
     <section class="wrapperForm">
-    
         <article class="welcome">
-            <h1>Bienvenue chez Pawfluence</h1>
-            <p>Nos compagnons vivent tous frais payer sans lever une patte !
-            <br>Et bien maintenant, ils vont travailler pour payer leur part de loyer ET aider ces semblables !</p>
+            <h1>Créer votre compte</h1>
+            <p>Rejoignez Pawfluence et commencez à partager vos expériences.</p>
         </article>
 
-        <div class="form">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="error_message" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
-            <h2>Par ici ! Faites votre inscription en quelques clicks :</h2>
-            
-            <div class="registerForm">
-                {{ form_errors(registrationForm) }}
-
-                {{ form_start(registrationForm) }}
-                    {{ form_row(registrationForm.pseudo) }}
-                    {{ form_row(registrationForm.email) }}
-                    {{ form_row(registrationForm.plainPassword, {
-                        label: 'Password'
-                    }) }}
+        <div class="form registerForm">
+            {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.pseudo) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, { label: 'Mot de passe' }) }}
                 <div class="checkboxRow">
                     {{ form_widget(registrationForm.agreeTerms) }}
                     {{ form_label(registrationForm.agreeTerms) }}
                     {{ form_errors(registrationForm.agreeTerms) }}
                 </div>
-
-                <button type="submit" class="submit">Inscrire</button>
-
-                {{ form_end(registrationForm) }}
-            </div>
+                <button type="submit" class="submit">S'inscrire</button>
+            {{ form_end(registrationForm) }}
         </div>
     </section>
 </main>

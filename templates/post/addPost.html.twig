@@ -1,35 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification du post{% endblock %}
+{% block title %}{{ edit is defined ? 'Modifier' : 'Créer' }} un post | Pawfluence{% endblock %}
 
 {% block body %}
 <main>
     <section class="wrapperForm">
         <article class="welcomeAdd">
-            <h1>Partagez votre aventure avec nous !</h1>
-            <p>La communauté attend d'en entendre plus de votre compagnon à quattre pattes !</p>
+            <h1>{{ edit is defined ? 'Modifier votre post' : 'Créer un nouveau post' }}</h1>
+            <p>Racontez votre aventure en quelques lignes.</p>
         </article>
 
         <div class="form">
             {{ form_start(formAddPost) }}
-
-            <div class="my-custom-class-for-errors">
-                {{ form_errors(formAddPost) }}
-            </div>
-
+            {{ form_errors(formAddPost) }}
             <div class="formRow">
-
                 {{ form_row(formAddPost.postTitle) }}
-
-                <div class="message">
-                    {{ form_row(formAddPost.textuelContent) }}
-                    {{ form_row(formAddPost.visuelContent) }}
-                </div>
-            </div>
+                {{ form_row(formAddPost.textuelContent) }}
+                {{ form_row(formAddPost.visuelContent) }}
                 {{ form_row(formAddPost.associatedTo) }}
-
                 {{ form_row(formAddPost.valider) }}
-
+            </div>
             {{ form_end(formAddPost) }}
         </div>
     </section>

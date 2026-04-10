@@ -1,83 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}PawFluence{% endblock %}</title>
-        <meta name="description" content="Le forum des fans d'animaux et de leur protection">
-        <meta name="author" content="Suzanne Pons">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pawfluence, la plateforme communautaire dédiée aux amoureux des animaux.">
+    <title>{% block title %}PawFluence{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+    <div class="site-shell">
+        <header class="site-header" id="siteHeader">
+            <a class="brand" href="{{ path('app_home') }}" aria-label="Accueil Pawfluence">
+                <img src="/img/Pawfluence.webp" alt="Logo Pawfluence" loading="lazy">
+                <span>Pawfluence</span>
+            </a>
 
-    <body>
-        <header >
-            <div class="logoHeader">
-                <a href="{{ path('app_home') }}">
-                    <img src="/img/Pawfluence.webp" alt="une patte avec Pawfluence écrit en-dessous" loading="lazy">
-                </a>
-            </div>
-            <nav class="navHeader" id="principal">
-                <ul class="listHeader">
-                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="{{ path('app_user') }}">Pawfluencers</a></li>
-                </ul>
+            <button id="burger" class="menu-toggle" type="button" aria-expanded="false" aria-controls="principal" aria-label="Ouvrir le menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="site-nav" id="principal" aria-label="Navigation principale">
+                <a href="{{ path('app_home') }}">Accueil</a>
+                <a href="{{ path('app_post') }}">Explorer</a>
+                <a href="{{ path('app_user') }}">Pawfluencers</a>
             </nav>
-            {# Menu burger #}
-            <div id="burger" aria-label="Menu">
-                <svg class="lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/></svg>
-                <svg class="cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"/></svg>
-            </div>
-            <div class="btnRegistration">
+
+            <div class="header-actions">
                 {% if app.user %}
-                <a class="btn" href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
-                    <a class="btn" href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
+                    <a class="btn btn-ghost" href="{{ path('show_user', {'id': app.user.id}) }}">Mon profil</a>
+                    <a class="btn btn-primary" href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-            <div class="btnRegistration">
-                    <a class="btn" href="{{ path('app_login') }}">Connexion</a>
-                    <a class="btn" href="{{ path('app_register') }}">Inscription</a>
+                    <a class="btn btn-ghost" href="{{ path('app_login') }}">Connexion</a>
+                    <a class="btn btn-primary" href="{{ path('app_register') }}">Inscription</a>
                 {% endif %}
             </div>
         </header>
 
         {% block body %}{% endblock %}
-        
-        <footer>
-            <div  class="logoFooter">
-                <a href="{{ path('app_home') }}">
-                    <img src="/img/Pawfluence.webp" alt="une patte avec Pawfluence écrit en-dessous" loading="lazy">
+
+        <footer class="site-footer">
+            <div>
+                <a class="brand" href="{{ path('app_home') }}">
+                    <img src="/img/Pawfluence.webp" alt="Logo Pawfluence" loading="lazy">
+                    <span>Pawfluence</span>
                 </a>
+                <p>La communauté qui transforme chaque histoire animale en impact positif.</p>
             </div>
-            <nav class="navFooter">
-                <ul class="listFooter">
-                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    <li><a href="{{ path('app_post') }}">Explorer</a></li>
-                    <li><a href="{{ path('app_user') }}">Pawfluencers</a></li>
-                </ul>
+            <nav aria-label="Navigation pied de page">
+                <a href="{{ path('app_home') }}">Accueil</a>
+                <a href="{{ path('app_post') }}">Explorer</a>
+                <a href="{{ path('app_user') }}">Pawfluencers</a>
             </nav>
-            <div class="legalMentions">
-                <ul>
-                    <li><span>@2025 Suzanne Pons</span></li>
-                    <li><a href="">Conditions générales d'utilisation (CGU)</a></li>
-                    <li><a href="">politique de confidentialité (Cookies)</a></li>
-                </ul>
-            </div>
-            <div class="btnRegistrationFooter">
-                {% if app.user %}
-                <a class="btn" href="{{ path('show_user', {'id':app.user.id}) }}">Mon profil</a>
-                <a class="btn" href="{{ path('app_logout') }}">Déconnexion</a>
-                {% else %}
-                <a class="btn" href="{{ path('app_login') }}">Connexion</a>
-                <a class="btn" href="{{ path('app_register') }}">Inscription</a>
-                {% endif %}
+            <div class="footer-meta">
+                <p>© 2026 Pawfluence</p>
+                <p>CGU • Confidentialité</p>
             </div>
         </footer>
+    </div>
 
-        <script src="{{ asset('js/burger.js') }}"></script>
-    </body>
+    <script src="{{ asset('js/burger.js') }}"></script>
+</body>
 </html>
