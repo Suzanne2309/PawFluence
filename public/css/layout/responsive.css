@@ -1,0 +1,40 @@
+@media (max-width: 980px) {
+  .topbar__inner {
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas:
+      'brand toggle actions'
+      'nav nav nav';
+  }
+
+  .brand { grid-area: brand; }
+  .menu-toggle { grid-area: toggle; display: inline-flex; }
+  .topbar__actions { grid-area: actions; justify-self: end; }
+
+  .topbar__nav {
+    grid-area: nav;
+    display: none;
+    margin-bottom: .7rem;
+    padding-top: .2rem;
+    flex-wrap: wrap;
+  }
+
+  .topbar__nav.is-open { display: flex; }
+
+  .hero-card,
+  .profile-card,
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar__actions {
+    display: none;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    justify-content: center;
+    padding: .85rem 0;
+  }
+}

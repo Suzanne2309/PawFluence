@@ -1,32 +1,24 @@
-.site-footer {
-  display: grid;
-  grid-template-columns: auto 1fr 1fr;
-  gap: 1rem;
-  align-items: start;
-  padding: 1rem 0 2rem;
+.footer {
+  border-top: 1px solid var(--border);
+  background: rgba(15, 16, 20, .82);
 }
 
-.navFooter .listFooter {
+.footer__inner {
+  min-height: 4.25rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  color: var(--muted);
+  font-size: .92rem;
 }
 
-.navFooter a {
-  display: inline-block;
-  padding: .5rem .75rem;
-  border-radius: 999px;
-  font-weight: 600;
+.footer__links {
+  display: inline-flex;
+  gap: .9rem;
 }
 
-.navFooter a:hover,
-.navFooter a:focus-visible {
-  background: var(--surface-soft);
-}
-
-.legalMentions ul {
-  display: grid;
-  gap: .35rem;
-  color: var(--text-soft);
-  font-size: .95rem;
+.footer__links a:hover,
+.footer__links a:focus-visible {
+  color: var(--text);
 }

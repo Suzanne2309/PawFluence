@@ -1,11 +1,11 @@
 const burger = document.getElementById('burger');
-const menu = document.getElementById('principal');
+const nav = document.getElementById('main-nav');
 
-if (burger && menu) {
+if (burger && nav) {
   burger.addEventListener('click', () => {
-    const expanded = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!expanded));
-    burger.classList.toggle('is-open', !expanded);
-    menu.classList.toggle('is-open', !expanded);
+    const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!isExpanded));
+    burger.classList.toggle('is-open', !isExpanded);
+    nav.classList.toggle('is-open', !isExpanded);
   });
 }

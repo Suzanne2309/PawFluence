@@ -1,0 +1,14 @@
+.comments-block h2,
+.profile-posts h2,
+.page-head h1,
+.form-card h1,
+.post-detail h1 {
+  margin: .3rem 0 .45rem;
+}
+
+.page-head p,
+.form-card p,
+.comments-block p,
+.profile-card p {
+  color: var(--muted);
+}

@@ -1,53 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion | PawFluence{% endblock %}
 
 {% block body %}
-<main>
-    <section class="wrapperForm">
-    {% if app.user %}
-        <article class="welcome">
-            <h2>Bienvenue {{ app.user.pseudo }}, Bon retour parmis nous !</h2>
-            <p>Partagez-nous votre journée dans un nouveau <a href="{{ path('add_post') }}">Post</a> ! Vos followers vont adorer avoir de vos nouvelles !</p>
-        </article>
-    {% else %}
-        <article class="welcome">
-            <h1>Bienvenue chez Pawfluence</h1>
-            <p>Nos compagnons vivent tous frais payer sans lever une patte !
-            <br>Et bien maintenant, ils vont travailler pour payer leur part de loyer ET aider ces semblables !</p>
-        </article>
-        <form method="post">
-            {% if error %}
-                <div class="error_message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-            <h2>Veuillez-vous connecter</h2>
-            <div class="loginForm">
-                <div class="field">
-                <label for="username">Votre e-mail :</label>
-                <input value="{{ last_username }}" name="_username" id="username" class="bg-[#FF8370] rounded-xl" type="email" autocomplete="email" required autofocus>
-                </div>
-                <div class="field">
-                <label for="password">Votre mot de passe :</label>
-                <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-                </div>
+<main class="page page--form">
+    <section class="form-card">
+        {% if app.user %}
+            <p class="eyebrow">Session active</p>
+            <h1>Vous êtes déjà connecté·e</h1>
+            <p>Bienvenue {{ app.user.pseudo }}. Vous pouvez retourner au feed.</p>
+            <a class="btn" href="{{ path('app_post') }}">Aller au feed</a>
+        {% else %}
+            <p class="eyebrow">Authentification</p>
+            <h1>Connexion</h1>
+            <p>Ravi de vous revoir sur PawFluence.</p>
+
+            <form method="post">
+                {% if error %}
+                    <div class="error_message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <label for="username">Adresse e-mail</label>
+                <input value="{{ last_username }}" name="_username" id="username" type="email" autocomplete="email" required autofocus>
+
+                <label for="password">Mot de passe</label>
+                <input type="password" name="_password" id="password" autocomplete="current-password" required>
+
                 <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
-            {#
-                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                See https://symfony.com/doc/current/security/remember_me.html
-
-                <div class="checkbox mb-3">
-                    <input type="checkbox" name="_remember_me" id="_remember_me">
-                    <label for="_remember_me">Remember me</label>
-                </div>
-            #}
-
-                <button class="submit" type="submit">
-                    Connecter
-                </button>
-            </div>
-        </form>
-    {% endif %}
+                <button class="btn" type="submit">Se connecter</button>
+            </form>
+        {% endif %}
     </section>
 </main>
 {% endblock %}

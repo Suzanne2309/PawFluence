@@ -1,65 +1,39 @@
 .btn,
-.submit,
 button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .4rem;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--primary);
-  color: #fff;
-  padding: .65rem 1rem;
+  padding: .62rem 1rem;
+  font: inherit;
   font-weight: 700;
   cursor: pointer;
-  transition: transform .2s ease, background .2s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff;
+  transition: transform .2s ease, filter .2s ease;
 }
 
 .btn:hover,
-.submit:hover,
 button:hover {
   transform: translateY(-1px);
+  filter: brightness(1.06);
 }
 
-.btn-secondary {
-  background: var(--accent);
+.btn--ghost {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border);
 }
 
-.btnInteractions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .45rem;
-  margin-top: .9rem;
-}
-
-.btnInteractions a {
-  width: 2.35rem;
-  height: 2.35rem;
-  border-radius: .7rem;
-  background: var(--surface-soft);
+.icon-btn {
   border: 1px solid var(--border);
+  background: var(--surface-2);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: .65rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-.btnInteractions svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.btnShare {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-}
-
-.btnShare a {
-  font-weight: 700;
-  color: var(--primary-strong);
-}
-
-.btnShare svg {
-  width: 1.25rem;
-  height: 1.25rem;
+.icon-btn--danger {
+  border-color: rgba(255, 93, 93, .4);
 }

@@ -1,0 +1,85 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: rgba(15, 16, 20, .78);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar__inner {
+  min-height: 4.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 800;
+}
+
+.brand__logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+}
+
+.brand__text {
+  font-size: 1.1rem;
+  letter-spacing: .2px;
+}
+
+.topbar__nav {
+  display: flex;
+  gap: .5rem;
+}
+
+.topbar__nav a {
+  padding: .5rem .8rem;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.topbar__nav a:hover,
+.topbar__nav a:focus-visible {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.topbar__actions {
+  display: flex;
+  gap: .5rem;
+}
+
+.menu-toggle {
+  display: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  background: var(--surface);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .22rem;
+}
+
+.menu-toggle__bar {
+  width: 1rem;
+  height: 2px;
+  background: var(--text);
+  border-radius: 999px;
+}
+
+.menu-toggle.is-open .menu-toggle__bar:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+.menu-toggle.is-open .menu-toggle__bar:nth-child(2) { opacity: 0; }
+.menu-toggle.is-open .menu-toggle__bar:nth-child(3) {
+  transform: translateY(-4px) rotate(-45deg);
+}

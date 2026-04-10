@@ -1,21 +1,21 @@
-.wrapperForm {
-  max-width: 780px;
+.page--form {
+  max-width: 720px;
   margin-inline: auto;
 }
 
-.form,
-form,
-.loginForm,
-.registerForm,
-.formRow,
-.field,
-.checkboxRow {
+.form-card {
+  display: grid;
+  gap: .9rem;
+}
+
+form {
   display: grid;
   gap: .8rem;
 }
 
 label {
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--muted);
 }
 
 input,
@@ -23,29 +23,32 @@ textarea,
 select {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: .8rem;
-  background: #fff;
+  background: var(--surface-2);
   color: var(--text);
-  padding: .75rem .85rem;
+  border-radius: .8rem;
+  padding: .72rem .85rem;
   font: inherit;
 }
 
 textarea {
-  min-height: 150px;
+  min-height: 130px;
 }
 
-.checkboxRow {
-  grid-template-columns: auto 1fr;
+.check-row {
+  display: flex;
   align-items: center;
+  gap: .5rem;
 }
 
-.checkboxRow input {
+.check-row input {
   width: auto;
 }
 
-.welcome,
-.welcomeAdd {
-  margin-bottom: 1rem;
-  display: grid;
-  gap: .35rem;
+.error_message,
+.alert-danger {
+  background: rgba(255, 93, 93, .12);
+  border: 1px solid rgba(255, 93, 93, .35);
+  color: #ffd3d3;
+  border-radius: .7rem;
+  padding: .65rem .8rem;
 }
