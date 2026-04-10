@@ -1,0 +1,12 @@
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+.story-strip{display:flex;gap:.8rem;overflow:auto;padding:.75rem}
+.story{display:grid;justify-items:center;gap:.35rem;min-width:74px}
+.story-avatar{width:58px;height:58px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#ff8a00,#e52e71,#7f53ac);display:grid;place-items:center}
+.story-avatar img{width:100%;height:100%;border-radius:50%;border:2px solid #fff;object-fit:cover}
+.feed-card{padding:0;overflow:hidden}
+.feed-head,.feed-body,.feed-foot{padding:.9rem 1rem}
+.feed-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.meta{display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.88rem}
+.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #f0f0f2}
+.post-image{width:100%;max-height:430px;object-fit:cover;background:#f1f1f3}
+.tag-row{display:flex;gap:.4rem;flex-wrap:wrap}.tag{background:#eef6ff;color:#1165a3;padding:.2rem .55rem;border-radius:999px;font-size:.75rem}

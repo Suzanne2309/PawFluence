@@ -1,0 +1,4 @@
+.hero-intro{background:linear-gradient(140deg,#fff,#f4f6ff);border:1px solid var(--line);border-radius:var(--radius);padding:1rem;margin-bottom:1rem}
+.feed{display:grid;gap:1rem}
+.page-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.empty-state{text-align:center;color:var(--muted)}

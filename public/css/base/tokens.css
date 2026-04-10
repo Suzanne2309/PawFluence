@@ -1,0 +1,7 @@
+:root{
+--bg:#fafafa;--surface:#fff;--surface-alt:#f3f3f5;--text:#0f0f11;--muted:#6f6f74;--line:#dbdbdf;
+--brand:#0095f6;--brand-dark:#0079c9;--danger:#ed4956;--radius:14px;--shadow:0 10px 24px rgba(0,0,0,.07)
+}
+body{font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text)}
+.container{width:min(1120px,calc(100% - 1.25rem));margin:0 auto}
+.hidden{display:none!important}

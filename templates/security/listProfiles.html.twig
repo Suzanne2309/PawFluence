@@ -1,24 +1,21 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Profils | PawFluence{% endblock %}
-
+{% block title %}Profils{% endblock %}
 {% block body %}
-<div class="page-head">
-    <h1>Les profils PawFluence</h1>
-</div>
-
-<div class="cards-grid">
-    {% for user in users %}
-        <article class="card profile-card">
-            <img src="{{ user.avatar ?: asset('img/Pawfluence.webp') }}" alt="Avatar {{ user.pseudo }}" class="avatar">
-            <h2>{{ user.pseudo }}</h2>
-            <p>{{ user.description ?: 'Aucune description pour le moment.' }}</p>
-            <a class="btn btn-ghost" href="{{ path('show_user', {id: user.id}) }}">Voir le profil</a>
-        </article>
-    {% else %}
-        <article class="card empty-state">
-            <p>Aucun profil disponible.</p>
-        </article>
-    {% endfor %}
+<div class="page-head"><h1>Profils de la communauté</h1></div>
+<div class="layout-grid">
+    <aside class="sidebar left"><article class="card"><h3>Découvrir</h3><p>Consulte les profils et leurs tags favoris.</p></article></aside>
+    <section class="feed">
+        {% for user in users %}
+            <article class="card profile-hero">
+                <img src="{{ user.avatar ?: asset('img/Pawfluence.webp') }}" alt="avatar {{ user.pseudo }}" class="avatar-lg">
+                <div>
+                    <h2>{{ user.pseudo }}</h2>
+                    <p>{{ user.description ?: 'Pas de description.' }}</p>
+                    <a class="btn btn-ghost" href="{{ path('show_user', {id: user.id}) }}">Voir le profil</a>
+                </div>
+            </article>
+        {% else %}<article class="card empty-state"><p>Aucun profil.</p></article>{% endfor %}
+    </section>
+    <aside class="sidebar right"><article class="card"><h3>Communauté</h3><p>Suivez les membres actifs et échangez dans les commentaires.</p></article></aside>
 </div>
 {% endblock %}

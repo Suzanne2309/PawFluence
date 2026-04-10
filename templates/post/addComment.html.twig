@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{ edit is defined ? 'Modifier le commentaire' : 'Ajouter un commentaire' }} | PawFluence{% endblock %}
-
+{% block title %}Commentaire{% endblock %}
 {% block body %}
-<section class="form-wrap">
-    <h1>{{ edit is defined ? 'Modifier votre commentaire' : 'Nouveau commentaire' }}</h1>
+<section class="form-wrap card">
+    <h1>{{ edit is defined ? 'Modifier votre commentaire' : 'Répondre au post' }}</h1>
     {{ form_start(formAddComment, {'attr': {'class': 'styled-form'}}) }}
         {{ form_row(formAddComment.commentTitle) }}
         {{ form_row(formAddComment.message) }}

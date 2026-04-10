@@ -1,48 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}PawFluence{% endblock %}</title>
-        <meta name="description" content="Le forum des fans d'animaux et de leur protection">
-        <meta name="author" content="Suzanne Pons">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}PawFluence{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+<div class="site-shell">
+    {% include 'partials/_header.html.twig' %}
 
-    <body>
-        <div class="site-shell">
-            <header class="site-header">
-                <a class="brand" href="{{ path('app_home') }}">🐾 PawFluence</a>
-                <nav class="site-nav">
-                    <a href="{{ path('app_post') }}">Posts</a>
-                    <a href="{{ path('app_user') }}">Profils</a>
-                    {% if app.user %}
-                        <a href="{{ path('add_post') }}">Créer un post</a>
-                        <a href="{{ path('show_user', {id: app.user.id}) }}">Mon profil</a>
-                        <a class="btn btn-ghost" href="{{ path('app_logout') }}">Déconnexion</a>
-                    {% else %}
-                        <a href="{{ path('app_register') }}">Inscription</a>
-                        <a class="btn" href="{{ path('app_login') }}">Connexion</a>
-                    {% endif %}
-                </nav>
-            </header>
+    <main class="page-content container">
+        {% include 'partials/_flash.html.twig' %}
+        {% block body %}{% endblock %}
+    </main>
 
-            <main class="page-content">
-                {% for label, messages in app.flashes %}
-                    {% for message in messages %}
-                        <div class="flash flash-{{ label }}">{{ message }}</div>
-                    {% endfor %}
-                {% endfor %}
+    {% include 'partials/_footer.html.twig' %}
+</div>
 
-                {% block body %}{% endblock %}
-            </main>
-
-            <footer class="site-footer">
-                <p>© {{ "now"|date("Y") }} PawFluence — Ensemble pour les animaux.</p>
-            </footer>
-        </div>
-    </body>
+<div class="toast" aria-live="polite"></div>
+<button class="btn back-top" type="button" data-back-top>↑</button>
+<script src="{{ asset('js/app.js') }}" defer></script>
+</body>
 </html>

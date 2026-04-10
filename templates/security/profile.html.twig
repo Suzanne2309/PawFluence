@@ -1,35 +1,19 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{ user.pseudo }} | PawFluence{% endblock %}
-
+{% block title %}{{ user.pseudo }}{% endblock %}
 {% block body %}
 <section class="card profile-hero">
     <img src="{{ user.avatar ?: asset('img/Pawfluence.webp') }}" alt="Avatar {{ user.pseudo }}" class="avatar-lg">
     <div>
         <h1>{{ user.pseudo }}</h1>
         <p>{{ user.description ?: 'Ce membre n\'a pas encore ajouté de description.' }}</p>
-        <div class="tag-row">
-            {% for tag in user.tagFollow %}
-                <span class="tag">#{{ tag.tagName }}</span>
-            {% else %}
-                <span class="tag">Aucun tag suivi</span>
-            {% endfor %}
+        <div class="kpi">
+            <div><strong>{{ user.posting|length }}</strong><small>posts</small></div>
+            <div><strong>{{ user.respond|length }}</strong><small>commentaires</small></div>
+            <div><strong>{{ user.tagFollow|length }}</strong><small>tags</small></div>
         </div>
-
-        {% if app.user and app.user.id == user.id %}
-            <a class="btn" href="{{ path('edit_user', {id: user.id}) }}">Modifier mon profil</a>
-        {% endif %}
+        <div class="tag-row" style="margin-top:.6rem;">{% for tag in user.tagFollow %}<span class="tag">#{{ tag.tagName }}</span>{% else %}<span class="tag">Aucun tag</span>{% endfor %}</div>
+        {% if app.user and app.user.id == user.id %}<a class="btn" style="margin-top:.7rem;" href="{{ path('edit_user', {id: user.id}) }}">Modifier mon profil</a>{% endif %}
     </div>
 </section>
-
-<section class="card">
-    <h2>Dernier post publié</h2>
-    {% if post %}
-        <h3>{{ post.postTitle }}</h3>
-        <p>{{ post.textuelContent|slice(0, 280) }}{% if post.textuelContent|length > 280 %}...{% endif %}</p>
-        <a class="btn btn-ghost" href="{{ path('show_post', {id: post.id}) }}">Voir le post</a>
-    {% else %}
-        <p>Ce membre n'a pas encore publié de post.</p>
-    {% endif %}
-</section>
+{% if post %}<article class="card" style="margin-top:1rem;"><h2>Dernier post</h2><h3>{{ post.postTitle }}</h3><p>{{ post.textuelContent|slice(0,220) }}{% if post.textuelContent|length > 220 %}...{% endif %}</p><a class="btn btn-ghost" href="{{ path('show_post', {id: post.id}) }}">Voir</a></article>{% endif %}
 {% endblock %}

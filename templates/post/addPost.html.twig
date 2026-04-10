@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{ edit is defined ? 'Modifier le post' : 'Créer un post' }} | PawFluence{% endblock %}
-
+{% block title %}{{ edit is defined ? 'Modifier le post' : 'Créer un post' }}{% endblock %}
 {% block body %}
-<section class="form-wrap">
-    <h1>{{ edit is defined ? 'Modifier votre post' : 'Créer un nouveau post' }}</h1>
+<section class="form-wrap card">
+    <h1>{{ edit is defined ? 'Modifier votre publication' : 'Créer une publication' }}</h1>
     {{ form_start(formAddPost, {'attr': {'class': 'styled-form'}}) }}
         {{ form_row(formAddPost.postTitle) }}
         {{ form_row(formAddPost.textuelContent) }}
-        {{ form_row(formAddPost.visuelContent) }}
+        {{ form_row(formAddPost.visuelContent, {'attr': {'data-image-input': ''}}) }}
+        <img src="" alt="Aperçu" class="post-image hidden" data-image-preview>
         {{ form_row(formAddPost.associatedTo) }}
         {{ form_row(formAddPost.valider, {'attr': {'class': 'btn'}}) }}
     {{ form_end(formAddPost) }}

@@ -1,44 +1,34 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Posts | PawFluence{% endblock %}
+{% block title %}Feed | PawFluence{% endblock %}
 
 {% block body %}
 <div class="page-head">
-    <h1>Les posts de la communauté</h1>
-    {% if app.user %}
-        <a class="btn" href="{{ path('add_post') }}">+ Nouveau post</a>
-    {% endif %}
+    <h1>Feed communauté</h1>
+    {% if app.user %}<a class="btn" href="{{ path('add_post') }}">+ Nouveau post</a>{% endif %}
 </div>
 
-<div class="feed">
-    {% for post in posts %}
-        <article class="card feed-card">
-            <div class="meta">
-                <span>{{ post.userOfPost ? post.userOfPost.pseudo : 'Membre' }}</span>
-                <span>{{ post.publicationDateFr }}</span>
-            </div>
-            <h2>{{ post.postTitle }}</h2>
-            <p>{{ post.textuelContent|slice(0, 220) }}{% if post.textuelContent|length > 220 %}...{% endif %}</p>
+<input class="search-input" type="search" placeholder="Rechercher un post, un tag, un auteur..." data-post-filter>
 
+<div class="layout-grid" style="margin-top:.8rem;">
+    <aside class="sidebar left">
+        {% include 'components/_story_strip.html.twig' %}
+    </aside>
+
+    <section class="feed">
+        {% for post in posts %}
+            {% include 'components/_post_card.html.twig' with {post: post} %}
+        {% else %}
+            <article class="card empty-state"><p>Aucun post pour l'instant.</p></article>
+        {% endfor %}
+    </section>
+
+    <aside class="sidebar right">
+        <article class="card">
+            <h3>Tendance</h3>
             <div class="tag-row">
-                {% for tag in post.associatedTo %}
-                    <span class="tag">#{{ tag.tagName }}</span>
-                {% endfor %}
-            </div>
-
-            <div class="actions">
-                <a class="btn btn-ghost" href="{{ path('show_post', {id: post.id}) }}">Lire</a>
-                {% if app.user and post.userOfPost and app.user.id == post.userOfPost.id %}
-                    <a class="btn btn-ghost" href="{{ path('edit_post', {id: post.id}) }}">Éditer</a>
-                    <a class="btn btn-danger" href="{{ path('delete_post', {id: post.id}) }}">Supprimer</a>
-                {% endif %}
+                <span class="tag">#Adoption</span><span class="tag">#Sauvetage</span><span class="tag">#Vétérinaire</span>
             </div>
         </article>
-    {% else %}
-        <article class="card empty-state">
-            <h2>Aucun post pour le moment</h2>
-            <p>Soyez la première personne à lancer une discussion.</p>
-        </article>
-    {% endfor %}
+    </aside>
 </div>
 {% endblock %}
