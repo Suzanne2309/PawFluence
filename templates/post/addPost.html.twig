@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ edit is defined ? 'Modifier le post' : 'Créer un post' }}{% endblock %}
+{% block body %}
+<section class="form-wrap card">
+    <h1>{{ edit is defined ? 'Modifier votre publication' : 'Créer une publication' }}</h1>
+    {{ form_start(formAddPost, {'attr': {'class': 'styled-form'}}) }}
+        {{ form_row(formAddPost.postTitle) }}
+        {{ form_row(formAddPost.textuelContent) }}
+
+        <div class="form-row">
+            {{ form_label(formAddPost.visuelContent) }}
+            {{ form_widget(formAddPost.visuelContent, {'attr': {'data-image-input': 'true'}}) }}
+            {{ form_errors(formAddPost.visuelContent) }}
+        </div>
+
+        <img src="" alt="Aperçu du visuel" class="post-image hidden" data-image-preview>
+
+        {{ form_row(formAddPost.associatedTo) }}
+        {{ form_row(formAddPost.valider, {'attr': {'class': 'btn'}}) }}
+    {{ form_end(formAddPost) }}
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+.form-wrap{max-width:760px;margin:0 auto}
+.styled-form .form-row,.styled-form>div{margin-bottom:.7rem}
+.styled-form label{display:block;font-weight:700;margin-bottom:.35rem}
+.styled-form input,.styled-form textarea,.styled-form select{width:100%;border:1px solid var(--line);border-radius:10px;padding:.68rem .78rem;background:#fff;font:inherit}
+.styled-form textarea{min-height:120px;resize:vertical}
+.search-input{width:100%;border:1px solid var(--line);border-radius:999px;padding:.62rem 1rem;background:#fff}

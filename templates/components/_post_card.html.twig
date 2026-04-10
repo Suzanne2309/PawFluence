@@ -1,0 +1,33 @@
+<article class="card feed-card" data-post-card>
+    <div class="feed-head">
+        <div class="meta">
+            <img class="avatar" src="{{ post.userOfPost and post.userOfPost.avatar ? post.userOfPost.avatar : asset('img/Pawfluence.webp') }}" alt="avatar">
+            <strong>{{ post.userOfPost ? post.userOfPost.pseudo : 'Membre' }}</strong>
+            <span>• {{ post.publicationDateFr }}</span>
+        </div>
+        <a class="nav-link" href="{{ path('show_post', {id: post.id}) }}">Voir</a>
+    </div>
+
+    {% if post.visuelContent %}
+        <img class="post-image" src="{{ post.visuelContent }}" alt="visuel post">
+    {% endif %}
+
+    <div class="feed-body">
+        <h3>{{ post.postTitle }}</h3>
+        <p>{{ post.textuelContent|slice(0, 180) }}{% if post.textuelContent|length > 180 %}...{% endif %}</p>
+        <div class="tag-row">
+            {% for tag in post.associatedTo %}
+                <span class="tag">#{{ tag.tagName }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="feed-foot quick-actions">
+        <button class="btn btn-ghost" type="button" data-like-btn data-state="off">♡ J’aime</button>
+        <button class="btn btn-ghost" type="button" data-save-btn data-state="off">⤴ Sauvegarder</button>
+        {% if app.user and post.userOfPost and app.user.id == post.userOfPost.id %}
+            <a class="btn btn-ghost" href="{{ path('edit_post', {id: post.id}) }}">Éditer</a>
+            <a class="btn btn-danger" href="{{ path('delete_post', {id: post.id}) }}">Supprimer</a>
+        {% endif %}
+    </div>
+</article>

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil | PawFluence{% endblock %}
+
+{% block body %}
+<section class="hero-intro">
+    <h1>Bienvenue sur PawFluence</h1>
+    <p>Une interface responsive, communautaire et visuelle pensée pour publier, échanger et agir pour les animaux.</p>
+    <div class="quick-actions">
+        <a class="btn" href="{{ path('app_post') }}">Entrer dans le feed</a>
+        {% if app.user %}<a class="btn btn-ghost" href="{{ path('add_post') }}">Créer un post</a>{% endif %}
+    </div>
+</section>
+
+<div class="layout-grid">
+    <aside class="sidebar left">
+        <article class="card">
+            <h3>Ton espace</h3>
+            <p>{% if app.user %}Connecté en tant que <strong>{{ app.user.pseudo }}</strong>.{% else %}Connecte-toi pour interagir.{% endif %}</p>
+        </article>
+    </aside>
+
+    <section>
+        {% include 'components/_story_strip.html.twig' %}
+        <article class="card" style="margin-top:1rem;">
+            <h2>Ce que tu peux faire</h2>
+            <ul>
+                <li>Publier des contenus visuels et textuels.</li>
+                <li>Explorer les posts avec une interface mobile-first.</li>
+                <li>Découvrir les profils engagés.</li>
+            </ul>
+        </article>
+    </section>
+
+    <aside class="sidebar right">
+        <article class="card">
+            <h3>Tips UX</h3>
+            <p>Teste la recherche live, les interactions like/save et le bouton retour haut.</p>
+        </article>
+    </aside>
+</div>
+{% endblock %}

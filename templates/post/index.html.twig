@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}Feed | PawFluence{% endblock %}
+
+{% block body %}
+<div class="page-head">
+    <h1>Feed communauté</h1>
+    {% if app.user %}<a class="btn" href="{{ path('add_post') }}">+ Nouveau post</a>{% endif %}
+</div>
+
+<input class="search-input" type="search" placeholder="Rechercher un post, un tag, un auteur..." data-post-filter>
+
+<div class="layout-grid" style="margin-top:.8rem;">
+    <aside class="sidebar left">
+        {% include 'components/_story_strip.html.twig' %}
+    </aside>
+
+    <section class="feed">
+        {% for post in posts %}
+            {% include 'components/_post_card.html.twig' with {post: post} %}
+        {% else %}
+            <article class="card empty-state"><p>Aucun post pour l'instant.</p></article>
+        {% endfor %}
+    </section>
+
+    <aside class="sidebar right">
+        <article class="card">
+            <h3>Tendance</h3>
+            <div class="tag-row">
+                <span class="tag">#Adoption</span><span class="tag">#Sauvetage</span><span class="tag">#Vétérinaire</span>
+            </div>
+        </article>
+    </aside>
+</div>
+{% endblock %}

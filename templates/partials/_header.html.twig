@@ -1,0 +1,18 @@
+<header class="site-header">
+    <div class="container">
+        <a class="brand" href="{{ path('app_home') }}">PawFluence</a>
+        <button class="icon-btn mobile-toggle" data-mobile-toggle aria-label="Menu">☰</button>
+        <nav class="site-nav" data-mobile-nav>
+            <a class="nav-link" href="{{ path('app_post') }}">Feed</a>
+            <a class="nav-link" href="{{ path('app_user') }}">Profils</a>
+            {% if app.user %}
+                <a class="nav-link" href="{{ path('add_post') }}">Créer</a>
+                <a class="nav-link" href="{{ path('show_user', {id: app.user.id}) }}">Moi</a>
+                <a class="btn btn-ghost" href="{{ path('app_logout') }}">Déconnexion</a>
+            {% else %}
+                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                <a class="btn" href="{{ path('app_login') }}">Connexion</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>

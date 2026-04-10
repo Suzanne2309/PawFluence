@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Connexion{% endblock %}
+{% block body %}
+<section class="form-wrap card">
+    <h1>Connexion</h1>
+    {% if error %}<div class="flash flash-error">Identifiants invalides.</div>{% endif %}
+    <form method="post" class="styled-form">
+        <label for="username">Email</label>
+        <input type="email" value="{{ last_username }}" name="_username" id="username" required autofocus>
+        <label for="password">Mot de passe</label>
+        <input type="password" name="_password" id="password" required>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <button class="btn" type="submit">Se connecter</button>
+    </form>
+</section>
+{% endblock %}

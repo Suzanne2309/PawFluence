@@ -1,0 +1,5 @@
+<h1>Confirmez votre email</h1>
+<p>Bonjour {{ user.pseudo }},</p>
+<p>Merci de valider votre adresse email pour activer votre compte PawFluence.</p>
+<p><a href="{{ signedUrl|raw }}">Confirmer mon adresse email</a></p>
+<p>Ce lien expire dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</p>

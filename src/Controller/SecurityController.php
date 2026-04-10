@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -55,17 +56,14 @@ class SecurityController extends AbstractController
 
     //Fonction pour modifier un profile
     #[Route('/user/{id}/edit', name: 'edit_user')] //On crée la route vers la fonction
-    #[IsGranted('edit', 'user')] //Si l'URL contient l'action edit et l'objet user alors on va vérifier si l'utilisateur et le même que celui du compte
+    #[IsGranted('ROLE_USER')] // utilisateur connecté requis
     public function editUser(User $user = null, Request $request, UserRepository $userRepository, EntityManagerInterface $em): Response
     {   
-        if ($user->getId() !== $this->getUser()->getId()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
-            throw $this->createAccessDeniedException();
-            /* var_dump($post->getUserOfPost(), $this->getUser()); die(); */
-            $this->addFlash(
-                'notice',
-                'Vous n`avez pas le droit d`editer ce profil !'
-            );
-            return $this->redirectToRoute('show_user');
+        if (!$user) {
+            return $this->redirectToRoute('app_user');
+        }
+        if ($user->getId() !== $this->getUser()->getId()) {
+            throw $this->createAccessDeniedException('Vous n\'avez pas le droit d\'éditer ce profil.');
         }
 
         $form = $this->createForm(ProfileType::class, $user); //On crée un nouveau formulaire post avec le fichier PostType  

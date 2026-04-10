@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Commentaire{% endblock %}
+{% block body %}
+<section class="form-wrap card">
+    <h1>{{ edit is defined ? 'Modifier votre commentaire' : 'Répondre au post' }}</h1>
+    {{ form_start(formAddComment, {'attr': {'class': 'styled-form'}}) }}
+        {{ form_row(formAddComment.commentTitle) }}
+        {{ form_row(formAddComment.message) }}
+        {{ form_row(formAddComment.valider, {'attr': {'class': 'btn'}}) }}
+    {{ form_end(formAddComment) }}
+</section>
+{% endblock %}

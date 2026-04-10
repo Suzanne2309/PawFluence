@@ -1,0 +1,10 @@
+<div class="card story-strip">
+    {% for i in 1..6 %}
+        <div class="story">
+            <div class="story-avatar">
+                <img src="{{ asset('img/Pawfluence.webp') }}" alt="story {{ i }}">
+            </div>
+            <small>ami_{{ i }}</small>
+        </div>
+    {% endfor %}
+</div>

@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PostController extends AbstractController
 {
@@ -35,6 +36,9 @@ final class PostController extends AbstractController
     #[Route('/post/add', name: 'add_post')] //On crée la route vers la fonction
     public function addPost(Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
 
         $post = new Post(); //On crée un nouveau object Post
         
@@ -57,9 +61,12 @@ final class PostController extends AbstractController
     }
 
     #[Route('/post/{id}/edit', name: 'edit_post')] //On crée la route vers la fonction
-    #[IsGranted('edit', 'post')] //Si l'URL contient l'action edit et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    #[IsGranted('ROLE_USER')] // utilisateur connecté requis
     public function editPost(Post $post = null, Request $request, PostRepository $postRepository, EntityManagerInterface $em): Response
-    {   
+    {
+        if (!$post) {
+            return $this->redirectToRoute('app_post');
+        }
         if ($post->getUserOfPost() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
             // throw $this->createAccessDeniedException(); Alors on donne accées pour éxecuter le reste de l'action
             /* var_dump($post->getUserOfPost(), $this->getUser()); die(); */
@@ -91,7 +98,7 @@ final class PostController extends AbstractController
 
     //Fonction pour supprimer un post
     #[Route('/post/{id}/delete', name: 'delete_post')]
-    #[IsGranted('edit', 'post')] //Si l'URL contient l'action delete et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    #[IsGranted('ROLE_USER')] // utilisateur connecté requis
     public function deletePost(Post $post, EntityManagerInterface $em)
     { 
         if ($post->getUserOfPost() !== $this->getUser()) { //Si On clique sur le bouton de suppression, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
@@ -134,6 +141,9 @@ final class PostController extends AbstractController
     #[Route('/comment/{id}/add', name: 'add_comment')] //On crée la route vers la fonction
     public function addComment(Post $post, Request $request, CommentRepository $commentRepository, EntityManagerInterface $em): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
 
         $comment = new Comment(); //On crée un nouveau object Post
         
@@ -158,9 +168,12 @@ final class PostController extends AbstractController
 
     //Fonction pour editer un poste spécifique
     #[Route('/comment/{id}/edit', name: 'edit_comment')] //On crée la route vers la fonction
-    #[IsGranted('edit', 'comment')] //Si l'URL contient l'action edit et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    #[IsGranted('ROLE_USER')] // utilisateur connecté requis
     public function editComment(Comment $comment = null, Request $request, CommentRepository $commentRepository, EntityManagerInterface $em): Response
-    {   
+    {
+        if (!$comment) {
+            return $this->redirectToRoute('app_post');
+        }
         if ($comment->getCommentUser() !== $this->getUser()) { //Si On fait appel à un post existant, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,
             // throw $this->createAccessDeniedException(); Alors on donne accées pour éxecuter le reste de l'action
             /* var_dump($post->getUserOfPost(), $this->getUser()); die(); */
@@ -191,7 +204,7 @@ final class PostController extends AbstractController
 
     //Fonction pour supprimer un commentaire
     #[Route('/comment/{id}/delete', name: 'delete_comment')]
-    #[IsGranted('delete', 'comment')] //Si l'URL contient l'action delete et l'objet post alors on va vérifier si l'utilisateur et le même que celui du post
+    #[IsGranted('ROLE_USER')] // utilisateur connecté requis
     public function deleteComment(Comment $comment, EntityManagerInterface $em)
     { 
         if ($comment->getCommentUser() !== $this->getUser()) { //Si On clique sur le bouton de suppression, on va comparer l'utilisateur du post et l'utilisateur de la sesion. Si les deux ne coincide pas,

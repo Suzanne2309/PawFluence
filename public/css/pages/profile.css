@@ -1,0 +1,4 @@
+.profile-hero{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center}
+.avatar-lg{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid #ececef}
+.profile-card{text-align:center}
+@media (max-width:640px){.profile-hero{grid-template-columns:1fr;text-align:center;justify-items:center}}
