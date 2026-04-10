@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil | PawFluence{% endblock %}
+
+{% block body %}
+<section class="form-wrap">
+    <h1>Modifier mon profil</h1>
+    {{ form_start(formEditProfile, {'attr': {'class': 'styled-form'}}) }}
+        {{ form_row(formEditProfile.avatar) }}
+        {{ form_row(formEditProfile._description) }}
+        {{ form_row(formEditProfile.tagFollow) }}
+        {{ form_row(formEditProfile.valider, {'attr': {'class': 'btn'}}) }}
+    {{ form_end(formEditProfile) }}
+</section>
+{% endblock %}

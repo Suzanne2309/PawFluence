@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.postTitle }} | PawFluence{% endblock %}
+
+{% block body %}
+<article class="card post-focus">
+    <div class="meta">
+        <span>{{ post.userOfPost ? post.userOfPost.pseudo : 'Membre' }}</span>
+        <span>{{ post.publicationDateFr }}</span>
+    </div>
+    <h1>{{ post.postTitle }}</h1>
+
+    {% if post.visuelContent %}
+        <img class="post-image" src="{{ post.visuelContent }}" alt="Visuel du post">
+    {% endif %}
+
+    <p>{{ post.textuelContent }}</p>
+
+    <div class="tag-row">
+        {% for tag in post.associatedTo %}
+            <span class="tag">#{{ tag.tagName }}</span>
+        {% endfor %}
+    </div>
+
+    {% if app.user %}
+        <a class="btn" href="{{ path('add_comment', {id: post.id}) }}">Ajouter un commentaire</a>
+    {% endif %}
+</article>
+
+<section class="comments">
+    <h2>Commentaires ({{ comments|length }})</h2>
+    {% for comment in comments %}
+        <article class="card comment-card">
+            <div class="meta">
+                <span>{{ comment.commentUser ? comment.commentUser.pseudo : 'Membre' }}</span>
+                <span>{{ comment.publicationDateFr }}</span>
+            </div>
+            <h3>{{ comment.commentTitle }}</h3>
+            <p>{{ comment.message }}</p>
+            {% if app.user and comment.commentUser and app.user.id == comment.commentUser.id %}
+                <div class="actions">
+                    <a class="btn btn-ghost" href="{{ path('edit_comment', {id: comment.id}) }}">Éditer</a>
+                    <a class="btn btn-danger" href="{{ path('delete_comment', {id: comment.id}) }}">Supprimer</a>
+                </div>
+            {% endif %}
+        </article>
+    {% else %}
+        <article class="card empty-state">
+            <p>Pas encore de commentaire. Démarrez la discussion !</p>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}

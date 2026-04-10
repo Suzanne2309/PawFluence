@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | PawFluence{% endblock %}
+
+{% block body %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Communauté animale</p>
+        <h1>Une interface sociale pensée pour protéger, partager et inspirer.</h1>
+        <p class="lead">Discutez avec d'autres passionnés, publiez des contenus utiles et construisez un profil qui reflète votre engagement.</p>
+        <div class="actions">
+            <a class="btn" href="{{ path('app_post') }}">Découvrir les posts</a>
+            {% if app.user %}
+                <a class="btn btn-ghost" href="{{ path('add_post') }}">Publier maintenant</a>
+            {% else %}
+                <a class="btn btn-ghost" href="{{ path('app_register') }}">Créer un compte</a>
+            {% endif %}
+        </div>
+    </div>
+    <img src="{{ asset('img/catDogfriends.webp') }}" alt="Animaux amis" class="hero-image">
+</section>
+
+<section class="cards-grid">
+    <article class="card">
+        <h2>Partage de contenu</h2>
+        <p>Publiez des témoignages, des photos et des conseils sur le bien-être animal en quelques clics.</p>
+    </article>
+    <article class="card">
+        <h2>Discussions ciblées</h2>
+        <p>Commentez, échangez et débattez autour de sujets qui comptent avec une expérience lisible et claire.</p>
+    </article>
+    <article class="card">
+        <h2>Profils vivants</h2>
+        <p>Mettez en avant vos centres d'intérêt, vos tags favoris et votre activité au sein de la communauté.</p>
+    </article>
+</section>
+{% endblock %}

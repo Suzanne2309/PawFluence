@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.pseudo }} | PawFluence{% endblock %}
+
+{% block body %}
+<section class="card profile-hero">
+    <img src="{{ user.avatar ?: asset('img/Pawfluence.webp') }}" alt="Avatar {{ user.pseudo }}" class="avatar-lg">
+    <div>
+        <h1>{{ user.pseudo }}</h1>
+        <p>{{ user.description ?: 'Ce membre n\'a pas encore ajouté de description.' }}</p>
+        <div class="tag-row">
+            {% for tag in user.tagFollow %}
+                <span class="tag">#{{ tag.tagName }}</span>
+            {% else %}
+                <span class="tag">Aucun tag suivi</span>
+            {% endfor %}
+        </div>
+
+        {% if app.user and app.user.id == user.id %}
+            <a class="btn" href="{{ path('edit_user', {id: user.id}) }}">Modifier mon profil</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="card">
+    <h2>Dernier post publié</h2>
+    {% if post %}
+        <h3>{{ post.postTitle }}</h3>
+        <p>{{ post.textuelContent|slice(0, 280) }}{% if post.textuelContent|length > 280 %}...{% endif %}</p>
+        <a class="btn btn-ghost" href="{{ path('show_post', {id: post.id}) }}">Voir le post</a>
+    {% else %}
+        <p>Ce membre n'a pas encore publié de post.</p>
+    {% endif %}
+</section>
+{% endblock %}
