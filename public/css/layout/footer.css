@@ -1,98 +1,32 @@
+.site-footer {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0 2rem;
+}
 
-/****** footer ******/
-footer {
-  background-color: #88B48C;
-  width: 100%;
-  padding: 2em;
+.navFooter .listFooter {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 4em;
+  flex-wrap: wrap;
+  gap: .5rem;
 }
 
-/* Logo */
-.logoFooter {
-  width: 15%;
-  text-align: center;
+.navFooter a {
+  display: inline-block;
+  padding: .5rem .75rem;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
-.logoFooter img {
-  width: 8em;
-  text-align: center;
-}
-
-.logoFooter a {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-/* Navigation list */
-.navFooter {
-  width: 25%;
-}
-
-.listFooter {
-  width: 100%;
-  padding: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.3em;
-}
-
-.listFooter li {
-  width: 25%;
-}
-
-span {
-  color: #000;
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-.listFooter li a {
-  color: #000;
-  text-align: center;
-  font-size: 1em;
-  font-weight: 700;
-}
-
-.listFooter li a:hover {
-  color: #525050;
-  transition: 0.5s ease-in-out;
-}
-
-/* legal mentions */
-.legalMentions {
-  width: 45%;
+.navFooter a:hover,
+.navFooter a:focus-visible {
+  background: var(--surface-soft);
 }
 
 .legalMentions ul {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.5em;
-}
-
-.legalMentions a {
-  color: #000;
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: 700;
-}
-
-/* buttons */
-.btnRegistrationFooter {
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1.5em;
+  display: grid;
+  gap: .35rem;
+  color: var(--text-soft);
+  font-size: .95rem;
 }

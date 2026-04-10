@@ -1,56 +1,56 @@
-/* General Cards */
-
-.card {
-    width: 50%;
-    padding: 2em;
-    background-color: rgba(136, 180, 140, 0.35);
-    border: 0.15em solid rgba(136, 180, 140, 0.45);
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.3em;
+.card,
+.postCard,
+.userCard,
+.cardWhat {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 1rem;
 }
 
-.cardContent {
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.2em;
-}
-
+.cardWhat,
+.userCard,
 .postCard {
-    width: 50%;
-    padding: 2em;
-    background-color: rgba(37, 114, 43, 0.35);
-    border: 0.15em solid rgba(37, 114, 43, 0.45);
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.3em;
+  display: grid;
+  gap: .5rem;
 }
 
-.userCard {
-    width: 100%;
-    padding: 2em;
-    background-color: rgba(136, 180, 140, 0.25);
-    border: 0.15em solid rgba(136, 180, 140, 0.25);
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.3em;
+.postTitle,
+.profilePseudo,
+.showProfile {
+  color: var(--primary-strong);
+  font-weight: 700;
+}
+
+.listPost ul,
+.listProfiles ul,
+.comment {
+  display: grid;
+  gap: .9rem;
+}
+
+.objectifs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .8rem;
+}
+
+.cardWhat svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary);
+}
+
+.avatarCard img,
+.userCard img {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--surface-soft);
 }
 
 .userCard img {
-  width: 50%;
-  border: #fff solid 0.1em;
-  border-radius: 100%;
+  max-width: 150px;
 }
